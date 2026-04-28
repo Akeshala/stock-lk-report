@@ -1,0 +1,660 @@
+Thesis Structure
+
+Cover page Should not have a page number. If you start numbering from the cover page, only the first 60 pages will be evaluated. Nothing beyond that.
+
+Starting from abstract to list of abbreviations must use a different numbering system (ex: roman numerals).
+
+Introduction to conclusion will be the main content that has 60 pages (these will use the regular indo-arabic numbering).
+
+Follow TTT. Tell what you are going to tell; Tell it; Tell what you told. Do not put any table/figure that is not done by you or add unnecessary definitions/theory as this can simply be cited.
+
+All diagrams must have a small description describing what it illustrates.
+
+Do not put important things in the appendix. Examiners usually do not even look at the appendix. Only additional things should be placed in it.
+
+
+Divide your entire thesis into three parts
+Part 1 – Coversheet to List of Glossaries (For numbering use lowercase roman letters)
+Coversheet no number
+Numbering starts from the abstract to list of glossaries
+Part 2 – Introduction to Conclusion (60 pages maximum)
+Part 3 – Appendices (Numbered using uppercase roman letters)
+References (not bibliography) – References are the ones which correspond to the citations in the document, referencing style is Harvard reference, not included in the 60 page count.
+Appendix 1 onwards (no limit for page count when comes to appendix)
+Note – Above is just an indicative structure of your thesis. The topics and sub topics might change depending on the type of project that you do. At the end you need to cover everything that is necessary for the marking scheme. How you cover and what you cover is up to you as far as there is a logical flow.
+
+Formatting Instructions:
+ 
+Table of Contents
+Content:
+List of all sections, sub-sections, chapters with their respective page numbers.
+Page numbering uses Roman numerals (i, ii, iii) for this section.
+List of Figures, Tables, and Abbreviations
+Page Numbering: Continue using Roman numerals for this section.
+List of Figures: Include figure numbers, captions, and page numbers.
+List of Tables: List all tables with numbers, titles, and page numbers.
+List of Abbreviations: Include any abbreviations used in the document with their definitions.
+
+Formatting Guidelines Final Year Project Report
+These guidelines must be strictly followed, and any deviation will be considered an attempt to cheat and may lead to penalties.
+1. Chapter Heading
+Font Size: 16
+Font Type: Times New Roman
+Format: ALL CAPS
+Style: Bold
+Example:
+CHAPTER 01: INTRODUCTION
+
+2. Subheading - First Level (e.g., 1.1)
+Font Size: 14
+Font Type: Times New Roman
+Format: Only the first word is capitalized
+Style: Bold
+Example:
+1.1 Problem background
+
+3. Subheading - Second Level (e.g., 1.1.1)
+Font Size: 12
+Font Type: Times New Roman
+Format: Only the first word is capitalized
+Style: Bold
+Example:
+1.1.1 Fraud detection system overview
+
+4. Body of Text (Paragraphs)
+Font Size: 12
+Font Type: Times New Roman
+Line Spacing: 1.5
+Text Alignment: Justified
+Sentence Case: The text should follow normal sentence capitalization rules.
+Margins: 1 inch on each side (top, bottom, left, and right).
+
+Footer and Header Instructions
+Header:
+Left: Short project name (e.g., "File Sense")
+Right: Chapter name (e.g., "Introduction")
+Footer:
+Page number in the center
+Your first name with initials or student ID (IIT Number / UoW Number)
+
+Important Notes:
+No line borders or lines should be used in the header or footer, except for the coversheet.
+Large phrases or unnecessary decoration should be avoided.
+Total number of pages from introduction to conclusion can be maximum of upto 60
+By following these strict formatting guidelines, your document will meet the professional and academic standards required.
+
+PART I – Front Matter - Coversheet to List of Glossaries
+These pages are not numbered except from the Table of Contents onwards. Use Roman numerals (i, ii, iii…) here.
+Coversheet
+Title of the thesis (concise & descriptive)
+Candidate’s full name, IIT ID, UoW ID
+MSc ASE / MSc CSF, Informatics Institute of Technology
+Supervisor name & designation
+Submission date (Month Year)
+Abstract (≈ 300 words) - must be within one page whole of the following 
+Structured in 3 paragraphs:
+Problem & Motivation (what gap/problem is being tackled)
+Methodology (data, techniques, approach)
+Results & Key Findings (initial or final outcomes)
+Also include:
+ACM Subject Descriptors (mandatory for ASE)
+Keywords (5–8 keywords)
+Declaration Page
+Standard IIT plagiarism declaration with signature & date.
+Acknowledgements (optional)
+Table of Contents
+List of Figures
+List of Tables
+List of Abbreviations / Acronyms
+
+PART II – Main Body
+Numbered with Arabic numerals (1, 2, 3…). All headings use Times New Roman, with the formatting hierarchy specified below.
+Total page limit (from Introduction to Conclusion): typically 60 pages max.
+CHAPTER 1 – INTRODUCTION
+📏 Length: ~8 pages total
+📚 Citation Guidance: Harvard style; minimum 1 citation per factual sentence; use recent (≤ 5 years) authoritative sources (e.g., ACM, IEEE, Springer, Elsevier).
+🎯 Goal: Introduce the research domain, define the problem, explain motivation and gaps, outline contributions, challenges, research questions, aim, and objectives.
+
+1.1 Chapter Overview
+Briefly introduce what this chapter contains. Summarise the flow in 3–4 sentences (e.g., background → problem → motivation → gap → contributions → aim & objectives).
+Explain why introducing the research clearly sets the stage for the rest of the dissertation. Follow the TTT principle (Tell what you’re going to tell; Tell it; Tell what you told).
+
+1.2 Problem Background (~1½ pages total)
+Introduce the broader research domain, break it into logical subtopics, and support each paragraph with recent, credible citations. Use clear sub-sectioning for readability.
+1.2.1 Context of the Research Domain
+Describe the overall context in which your research is situated.
+Introduce the broader field, its significance, and recent developments.
+Define any key concepts using authoritative sources.
+Keep this section ~½ page.
+Example (paraphrased):
+“In recent years, explainable artificial intelligence (XAI) has gained significant attention within medical imaging, driven by the need to improve transparency and trust in automated diagnostic systems (Author et al., 2023; Author & Author, 2022).”
+
+1.2.2 Subdomain / Key Technological Context
+Zoom into the specific subdomain or technology relevant to your project (e.g., federated learning, multimodal fusion, anomaly detection).
+Define technical concepts precisely.
+Reference foundational and recent works.
+Position where your topic fits in the subdomain. (~½ page)
+
+1.2.3 Practical / Real-World Context
+Describe industry, regulatory, or societal context, including:
+Real-world applications
+Gaps in deployment or adoption
+Emerging trends
+Use policy papers, standards (e.g., BCS, GDPR, WHO), or industry reports for credibility. (~½ page)
+📌 Tip: Keep paragraphs tight but well-cited. Total for 1.2 ≈ 1½ pages.
+
+1.3 Problem Definition (½ – ⅔ page)
+Present a clear, precise definition of the problem your research addresses:
+Why this is a problem in the chosen domain
+Technical/methodological aspects involved
+Scope and boundaries (what is included/excluded)
+Support with citations showing the problem is known but unresolved.
+
+1.3.1 Problem Statement
+Write one concise, strong sentence summarising the core problem.
+Example:
+“There is currently no effective method for integrating multimodal XAI outputs to support radiologists in diagnosing complex brain tumours in real time.”
+This should read like a gap in a single line, setting up the motivation.
+
+1.4 Research Motivation
+Explain why this problem matters — technically, socially, or personally.
+Technical motivation: e.g., current approaches fail to address XYZ.
+Societal motivation: e.g., impact on healthcare outcomes.
+Personal motivation: professional experience relevant to the problem.
+Maintain a professional, academic tone even when including personal motivation.
+
+1.5 Research Gap
+Clearly identify and justify gaps in existing work.
+Use bullet points or short subheadings for each gap. For each gap:
+State the gap in bold.
+Justify why it is a gap with literature and logical reasoning.
+Use separate paragraphs for different justifications.
+Example structure:
+Lack of Multimodal Fusion in XAI Models
+Existing studies mainly focus on unimodal interpretability, neglecting cross-modal fusion, which is essential for complex clinical reasoning (Author et al., 2023; Author, 2021).
+Limited Evaluation Protocols for Real-Time Settings
+Current benchmarks do not assess interpretability under streaming constraints (Author & Author, 2022).
+👉 Keep this structured, scannable, and heavily cited.
+
+1.6 Contribution to the Body of Knowledge
+State how your work advances research knowledge. Divide into two clear sub-sections.
+1.6.1 Contribution to the Research Domain
+Explain how your work contributes methodologically, theoretically, or empirically (e.g., new model, evaluation framework, dataset). Cite related work to highlight novelty.
+1.6.2 Contribution to the Problem Domain
+Describe how your work provides practical solutions or evidence addressing the specific problem in your context (e.g., supporting radiologists, improving security workflows). Provide evidence of real-world significance.
+📌 Tip: Use further subheadings if multiple contributions exist under each category.
+
+1.7 Research Challenges
+Identify the main challenges you expect to address.
+For each challenge:
+Bold the challenge as a subheading.
+Provide explanation and justification in a separate paragraph.
+Example:
+Challenge 1: Heterogeneous Data Modalities
+The data sources vary widely in format and resolution, making joint representation difficult (Author et al., 2023).
+Challenge 2: Real-Time Interpretability Constraints
+Existing methods are not optimised for live inference scenarios (Author, 2022).
+
+1.8 Research Questions
+List precise, answerable research questions aligned with your problem and gaps. Number them clearly.
+Example:
+RQ1: How can multimodal fusion techniques be adapted to generate unified XAI outputs for radiology images?
+RQ2: What evaluation metrics can effectively assess interpretability of fused outputs in real time?
+These form the backbone of the dissertation.
+
+1.9 Research Aim
+State the overall aim in one sentence, using Design–Develop–Evaluate structure.
+Example:
+“The aim of this research is to design, develop, and evaluate a multimodal explainable AI framework to support real-time brain tumour diagnosis in MRI and CT imaging.”
+Follow this with a short paragraph elaborating the aim in context.
+
+1.10 Research Objectives
+List SMART objectives (Specific, Measurable, Achievable, Relevant, Time-bound).
+Start from problem identification, not literature.
+Example:
+RO1: Identify the limitations of existing unimodal XAI methods in radiology interpretation.
+RO2: Design a multimodal fusion pipeline combining MRI and CT explanations.
+RO3: Develop and implement the proposed pipeline using [technologies].
+RO4: Evaluate the framework using standard interpretability metrics and real-time benchmarks.
+
+1.11 Chapter Summary
+Summarise key points in 1 short paragraph:
+Context and problem
+Motivation and gap
+Contributions and challenges
+Aim, questions, and objectives
+Provide a transition sentence to Chapter 2 (Literature Review).
+
+📌 Additional Notes for Chapter 1:
+Background: 1½ pages, split into subsections.
+Problem Definition: ½ – ⅔ page.
+Rest: concise, structured with bullets and subheadings.
+Heavy citation density.
+Times New Roman, 12 pt, 1.5 spacing, justified alignment.
+
+CHAPTER 2 – LITERATURE REVIEW
+📏 Length: ~15 pages
+📚 Citation Guidance: 1 citation per factual sentence; use recent (≤5 years) authoritative sources (ACM, IEEE, Springer, Elsevier).
+🎯 Goal: Critically analyse the existing body of knowledge, situate your work within it, identify gaps, and build a logical bridge to your methodology.
+
+2.1 Chapter Overview
+Briefly explain the purpose of the literature review and the structure of this chapter in 3–4 sentences. Example flow:
+“This chapter begins with a conceptual mapping of the research area, followed by an in-depth review of the problem domain. It then examines relevant technologies and existing work through thematic analysis, evaluates benchmarking strategies, and concludes with a synthesis that leads to the proposed research methodology.”
+
+2.2 Concept Map
+Present a concept map that visually links major ideas, technologies, and sub-domains relevant to your research.
+Keep the map clean and hierarchical, ideally using software such as XMind, draw.io, or Miro.
+Use the map to clarify relationships between broad domain concepts and specific research components.
+Insert the figure here with a cross-reference to the appendix.
+🖼 Figure 2.1 – Concept Map of Research Domain (placeholder)
+Move the full figure to Appendix I, and write something like: “Figure 2.1 illustrates the conceptual structure of the domain; the detailed version is provided in Appendix I.”
+
+2.3 Problem Domain Review (~4 pages)
+Establish the theoretical and contextual foundations of your topic.
+2.3.1 Introduction to the Domain
+Start broad: introduce the overarching research domain (e.g., cybersecurity, medical imaging, XAI, anomaly detection).
+Define key terms and concepts using authoritative sources.
+Keep it concise but clear (≈1 page).
+2.3.2 Key Challenges / Sub-areas
+Organise the problem domain into thematic sub-areas, typically 3–5. For each:
+Define the concept clearly.
+Explain why it is important.
+Support with recent citations.
+End with a linking sentence to the next sub-area.
+Example sub-areas:
+Data heterogeneity
+Interpretability and transparency
+Domain-specific constraints (e.g., real-time performance)
+Adversarial robustness
+
+2.3.3 Existing Frameworks / Standards / Domain Approaches
+Summarise relevant frameworks, standards, and protocols (e.g., GDPR, BCS Code of Conduct, NIST, standard evaluation pipelines).
+Explain how these shape or constrain research design.
+Blend academic literature with regulatory/professional documents.
+
+2.3.4 Proposed Architecture (Positioning)
+Conclude the Problem Domain section by presenting your high-level conceptual architecture.
+🖼 Figure 2.2 – Proposed Conceptual Architecture (placeholder)
+Describe each component briefly.
+Link back to the domain challenges above.
+This serves as a bridge to Chapter 3 (Methodology).
+
+2.4 Technological Review (~4 pages)
+Critically examine relevant technologies stage by stage, not just the final algorithm. Example structure for ML projects:
+Data Acquisition & Pre-processing (e.g., normalization, augmentation, anonymization)
+Model Architectures (e.g., CNNs, Transformers, Federated frameworks)
+Hyperparameter Tuning approaches
+Evaluation Metrics used in the field
+For non-ML projects (e.g., security), this could involve protocol standards, cryptographic primitives, system architectures, or forensic toolchains.
+📌 Tip: Use sub-sections for each stage, and focus on critical analysis, not summaries.
+
+2.5 Existing Work (~4 pages)
+Use thematic analysis instead of one-paper-per-paragraph summaries.
+2.5.1 Thematic Grouping
+Identify major themes in the literature (e.g., methodological innovations, application domains, evaluation techniques).
+Discuss multiple works together under each theme, highlighting trends and divergences.
+2.5.2 Cross-theme Linking
+Acknowledge overlapping works between themes.
+Use linking sentences to maintain logical flow.
+📌 Minimum 1 citation per sentence.
+
+2.6 Evaluation and Benchmarking (~3 pages)
+Critically assess how existing work is evaluated:
+Datasets used (scope, diversity, availability).
+Benchmarks and protocols.
+Metrics and whether they are appropriate for the domain.
+Limitations in evaluation methods.
+
+2.7 Chapter Summary
+Summarise key takeaways:
+Main themes in the literature
+Identified gaps
+Positioning of your research relative to prior work
+Smooth transition to Chapter 3.
+
+
+
+CHAPTER 3 – METHODOLOGY
+📏 Length: ~6 pages
+🎯 Goal: Justify and explain how you will conduct the research.
+
+3.1 Chapter Overview
+Outline the structure: philosophical stance, research strategy (Saunders), development & project management methodology, schedule, resources, data, risks.
+
+3.2 Research Methodology (Saunders’ Research Onion)
+Introduce Saunders’ Research Onion (cite Saunders et al., 2019).
+Briefly justify each layer: philosophy, approach, strategy, choices, time horizon, techniques.
+No need to explain every definition — focus on your choices and why they fit your project.
+3.3 Development Methodology
+State the software development methodology you will use (e.g., Agile, Waterfall, Spiral) and justify why.
+Compare briefly with alternatives.
+Link your choice to project scope and constraints.
+
+3.4 Project Management Methodology
+Describe the project management framework (e.g., Scrum, Kanban, PRINCE2) and justify selection.
+Link to team size, deliverables, and timelines.
+
+3.4.1 Schedule
+Provide a Gantt chart or similar timeline. Place the detailed version in the appendix and include a figure/table here.
+📊 Table 3.1 – Project Schedule (Gantt Chart Placeholder)
+
+3.4.2 Deliverables and Dates
+List major milestones, deliverables, and their due dates.
+Can use a simple table.
+
+3.4.3 Resources
+3.4.3.1 Hardware Resources
+List computing resources (e.g., GPUs, cloud services).
+3.4.3.2 Software Resources
+List frameworks, libraries, IDEs, tools.
+3.4.3.3 New Technical Skills
+List new technical skills acquired (not soft skills).
+
+3.4.4 Data Requirements
+Describe:
+Datasets used (sources, size, type)
+Licensing and ethical considerations
+Preprocessing needed
+
+3.4.5 Risks and Mitigation
+Identify project risks, estimate likelihood and impact, and propose mitigation.
+📊 Table 3.2 – Risk and Mitigation Table
+Risk
+Likelihood
+Impact
+Mitigation
+
+
+3.10 Chapter Summary
+Summarise methodological choices and their justifications.
+CHAPTER 4 – LEGAL, ETHICAL, SOCIAL AND PROFESSIONAL ISSUES (LESP)
+📏 Length: ~2 pages
+🎯 Goal: Address legal, ethical, social, and professional responsibilities as required by BCS and GDPR.
+
+4.1 Chapter Overview
+Introduce why LESP considerations are critical in your research context (e.g., data privacy, algorithmic bias, professional responsibility).
+4.2 BCS Code of Conduct
+Identify relevant principles of the BCS Code of Conduct.
+Explain how they apply to your project.
+Include citations to the BCS document.
+4.3 Social Issues
+Examples:
+Bias in datasets
+Accessibility of the solution
+Societal impact of deployment
+Describe each issue, its implications, and mitigation strategies.
+4.4 Legal Issues
+Examples:
+GDPR compliance
+Intellectual property
+Consent for data use
+Link to specific laws or regulations and explain compliance steps.
+4.5 Ethical Issues
+Examples:
+Anonymisation of data
+Fairness and accountability
+Transparency of decision-making
+Discuss your approach to ensuring ethical conduct in data handling and modelling.
+
+4.6 Professional Issues
+Examples:
+Responsible disclosure of vulnerabilities
+Integrity of reporting
+Alignment with professional standards
+
+4.7 Chapter Summary
+Summarise LESP issues, mitigations, and their relevance to your research design.
+
+CHAPTER 5 – IMPLEMENTATION / EXPERIMENTAL SETUP
+📏 Length: ~10 pages
+🎯 Goal: Describe and justify the technical implementation of your solution, experimental setup, and environment.
+5.1 Chapter Overview
+Provide a short paragraph (3–4 sentences) outlining the chapter’s structure. Example flow:
+“This chapter details the implementation environment, including technology and data selection, followed by a description of core functionalities and user interface elements. It concludes with a summary that bridges to the evaluation chapter.”
+5.2 Technology Selection
+Describe the technology stack clearly and justify each component.
+5.2.1 Programming Language
+Explain the choice of language (e.g., Python, Java, C#) and why it fits your project requirements. Consider community support, libraries, and performance characteristics.
+5.2.2 Libraries
+List major libraries (e.g., TensorFlow, PyTorch, scikit-learn) and briefly justify their use.
+5.2.3 Frameworks
+Discuss frameworks (e.g., Django, Spring Boot, FastAPI) and their role in your architecture.
+5.2.4 IDEs and Tools
+Describe the development environment, build tools, version control, and testing tools.
+📊 Table 5.1 – Technology Stack Summary Table (placeholder)
+Component
+Name
+Purpose
+Justification
+Language
+Python
+ML pipeline
+Mature ecosystem
+Framework
+FastAPI
+REST API
+Lightweight & fast
+Library
+PyTorch
+Deep Learning
+GPU support
+
+
+5.3 Data Selection
+Describe data sources, formats, and why specific datasets were chosen.
+If multiple datasets are available, justify the selection.
+Address licensing and ethical considerations.
+Briefly mention preprocessing applied.
+
+5.4 Implementation of Core Functionalities
+Break down your implementation into key modules or functionalities (e.g., data ingestion, preprocessing, model training, API endpoints).
+For each module:
+Give a short description of its purpose.
+Provide relevant code snippets or screenshots.
+Explain how the implementation satisfies design and methodological requirements.
+🖼 Figure 5.1 – Example Code Snippet (placeholder)
+📌 Only include short, relevant snippets, not full code dumps. Place full listings in the appendix.
+
+5.5 User Interface (if applicable)
+Describe any UI components, their purpose, and how they fit into the overall system.
+🖼 Figure 5.2 – Sample UI Screenshot (placeholder)
+If wireframes were presented in the Design chapter, you can focus here on implemented interfaces.
+Discuss usability considerations briefly.
+
+5.6 Chapter Summary
+Summarise what has been implemented, the tools and data used, and prepare the reader for the evaluation in Chapter 6.
+
+
+
+
+
+CHAPTER 6 – RESULTS AND EVALUATION
+📏 Length: ~10–12 pages (depending on the complexity of the evaluation)
+📚 Citation Guidance: Where applicable, cite benchmarking protocols, evaluation metrics, or comparison baselines from authoritative sources (e.g., papers, tool documentation).
+🎯 Goal: Present and critically analyse quantitative and qualitative evaluation results, compare with baselines/SOTA, and conduct ablation or sensitivity studies (particularly for ASE).
+6.1 Chapter Overview
+Briefly outline what this chapter covers in 3–4 sentences. Mention the types of evaluations conducted (quantitative, qualitative, ablation, SOTA comparison), and explain how they demonstrate the validity and performance of your proposed solution. Reference your Methodology and Implementation chapters to indicate where the setup details can be found.
+
+6.2 Quantitative Results
+Present all numerical performance metrics obtained during testing and evaluation.
+Use tables and figures to show metrics such as accuracy, precision, recall, F1 score, AUC, latency, or throughput.
+Always accompany tables with explanatory text highlighting key trends, improvements, or anomalies.
+Where applicable, include statistical significance testing.
+📊 Table 6.1 – Quantitative Performance Metrics (placeholder)
+Model / Variant
+Accuracy
+F1
+Precision
+Recall
+AUC
+Dataset
+Baseline
+0.82
+0.80
+0.81
+0.79
+0.85
+XYZ
+Proposed
+0.91
+0.90
+0.88
+0.92
+0.94
+XYZ
+
+📈 Figure 6.1 – ROC Curves for Models (placeholder)
+
+6.3 Qualitative Analysis
+Present non-numerical results:
+Visual outputs (e.g., heatmaps, saliency maps, system screenshots).
+Case studies, examples of correct and incorrect classifications.
+Feedback from expert users or domain specialists.
+📷 Figure 6.2 – Sample System Output with Explanations (placeholder)
+Explain what these qualitative observations reveal that the numbers cannot, especially in terms of interpretability, usability, or practical impact.
+
+6.4 Ablation / Sensitivity Studies (ASE)
+(Primarily for ASE students)
+Investigate the impact of removing or altering key components of your architecture or pipeline.
+📊 Table 6.2 – Ablation Study Results (placeholder)
+Model Variant
+Component Removed
+Accuracy
+F1 Score
+Remarks
+Full Model
+–
+0.91
+0.90
+Baseline proposed
+No Fusion
+Fusion Layer
+0.83
+0.82
+Major drop
+No XAI
+Explainer Module
+0.84
+0.81
+Interpretability impacted
+
+Discuss how each component contributes to the overall system’s performance, robustness, or explainability.
+
+6.5 Baseline / SOTA Comparison
+Compare your approach with existing baseline models or State-of-the-Art (SOTA) methods from the literature.
+Ensure fair evaluation protocols (same dataset, preprocessing, hyperparameters).
+Present results in comparative tables and charts.
+📊 Table 6.3 – Baseline vs Proposed Method Comparison (placeholder)
+Method
+Accuracy
+F1
+Evaluation Protocol
+Reference
+Baseline A
+0.82
+0.79
+Standard Protocol
+(Author, 2022)
+SOTA B
+0.88
+0.85
+Same Dataset
+(Author et al., 2023)
+Proposed
+0.91
+0.90
+Same Dataset
+–
+
+Highlight relative improvements, but also discuss trade-offs (e.g., runtime, interpretability, deployment feasibility).
+
+6.6 Discussion
+Critically interpret the significance of all your results.
+Synthesize quantitative, qualitative, ablation, and SOTA comparison findings.
+Relate them back to your research questions, objectives, and hypotheses.
+Discuss strengths, unexpected outcomes, practical implications, and theoretical relevance.
+Acknowledge any anomalies and provide plausible explanations.
+📌 Tip: This section is interpretive, not descriptive. Do not repeat tables; explain why the results matter.
+
+6.7 Chapter Summary
+Summarise the key findings of this chapter in a clear, concise paragraph.
+Briefly restate the types of evaluations performed.
+Highlight major performance achievements and insights.
+Note how these results set the stage for Chapter 7 (Conclusion & Future Work).
+
+
+CHAPTER 7 – CONCLUSION AND FUTURE WORK
+📏 Length: ~4–5 pages
+🎯 Goal: Summarise the entire dissertation, restate key findings, contributions, limitations, and clearly articulate future research directions.
+7.1 Chapter Overview
+Briefly summarise the structure of this chapter in 3–4 sentences. Mention that this chapter consolidates findings, reflects on contributions and limitations, and outlines future research directions.
+
+7.2 Summary of Findings
+Provide a concise synthesis of the main results:
+Recap the research questions and objectives from Chapter 1.
+Show how each has been addressed and answered.
+Use a table to map objectives to outcomes where appropriate.
+📊 Table 7.1 – Objectives vs Achievements (placeholder)
+Objective
+Achievement
+Evidence (Chapter)
+RO1
+Identified gaps in existing methods
+Ch. 2
+RO2
+Designed proposed architecture
+Ch. 3–4
+RO3
+Implemented and tested model
+Ch. 5
+RO4
+Evaluated against baselines
+Ch. 6
+
+
+7.3 Contributions
+Reiterate how your work contributes to:
+Research Domain (theoretical / methodological advancements)
+Problem Domain (practical solutions / applied impact)
+Structure this section clearly (bullets or subheadings). Tie each contribution back to the gaps identified in Chapter 1.
+
+7.4 Limitations
+Acknowledge any limitations candidly, e.g.:
+Dataset or data diversity constraints
+Technical or architectural limitations
+Evaluation scope (e.g., number of experts, real-world deployment)
+Ethical or legal constraints
+📌 Link limitations logically to the results and methodology discussed earlier.
+
+7.5 Future Work
+Outline clear, meaningful future research directions, derived from the limitations and contributions.
+Examples:
+Extending to new modalities, domains, or data sources
+Improving real-time performance or interpretability
+Integrating new techniques or evaluation protocols
+Deploying in production or conducting longitudinal studies
+Structure this as bullet points or short paragraphs, focusing on research potential, not vague statements.
+
+7.8 Contribution to the Body of Knowledge
+Revisit your contributions from Chapter 1 and explicitly state how the completed work advances the domain.
+Research domain contributions (methods, theory)
+Problem domain contributions (practical impacts)
+
+7.9 Concluding Remarks
+Provide a concise, strong conclusion (1–2 paragraphs):
+Reflect on the project as a whole
+Reaffirm its significance
+End with a forward-looking statement
+
+PART III – Back Matter - References and Appendices
+References
+Harvard style; every in-text citation must appear here.
+No uncited references allowed.
+Appendices
+Ethics clearance form (if applicable)
+Detailed questionnaires / code snippets / large tables
+User manuals or screenshots
+
+
+
+
