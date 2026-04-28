@@ -97,6 +97,11 @@
 % general commands
 \newcommand*{\fullstop}[1]{#1.}
 
+% Optional metadata for simpledeclaration layout
+\newcommand*{\registrationnumber}[1]{\def\reg@num{#1}}
+\def\reg@num{}
+\newcommand*{\declarationsigneddate}[1]{\def\decl@signeddate{#1}}
+\def\decl@signeddate{\defensedatevar}
 
 % Package Body
 %%%%%%%%%%%%%%%%
@@ -121,14 +126,13 @@
 \newlength\tindent
 \newenvironment{abstractstyle}[1]{%
     \cleardoublepage
-    \begin{center}\LARGE\textbf{#1}\end{center}
-    \vspace{1cm}
-    
-    \setlength{\tindent}{\parindent}
-    \setlength{\parindent}{0pt}
+    \setlength{\tindent}{\parindent}%
+    \setlength{\parindent}{0pt}%
+    \noindent{\LARGE\textbf{#1}}\par
+    \vspace{1cm}%
     }{%
-    \vspace{1cm}
-    \setlength{\parindent}{\tindent}
+    \vspace{1cm}%
+    \setlength{\parindent}{\tindent}%
 }
 
 % title page
@@ -199,54 +203,33 @@
 % document (see thesis.tex) so front matter follows the required order.
 
 \newcommand*{\thesisprintdeclaration}{%
-    \begin{abstractstyle}{\cons@hmain}
-        {\Large \noindent \cons@hi}
-
-        \vskip 5mm
-        \begin{tabular}{l l}
-            \cons@title:  & \@title \\
-            \\[-4mm]
-            \cons@student:  & \@author \\
-            \\[-4mm]
-            \ifgroupwork
-                \cons@student:  & \secauthor \\
-                \\[-4mm]
-            \fi
-            \cons@studytopic: & \ifcedu\academicgrade\else\academictitle\fi\\
-            \\[-4mm]
-            \ifnograd\cons@year\else\cons@defyear\fi: & \@date \\
-            \\[-4mm]
-            \cons@supervisor: & \supervisorvar \\
-            \\[-4mm]
-            \cons@expert: & \extexp \\
-            \\[-4mm]
-            \cons@indpartner: & \indpart \\
-        \end{tabular}
-
-        \vskip 12mm
-        {\Large \noindent \cons@hii}
-
-        \vskip 5mm
-        \begin{todolist}
-            \item \cons@public
-            \vspace{-2mm}
-            \item \cons@confidential
-        \end{todolist}
-        \vspace{-4mm}
-
-        \vskip 12mm
-        {\Large \noindent \cons@hiii }
-
-        \vskip 5mm
-        \noindent \cons@self
-
-        \vskip 10mm
-        \noindent \cons@sign{} \underline{\hspace{5cm}}
-        \ifgroupwork
-            \vskip 7mm
-            \noindent \cons@sign{} \underline{\hspace{5cm}}
-        \fi
-    \end{abstractstyle}%
+    \cleardoublepage
+    \setlength{\tindent}{\parindent}%
+    \setlength{\parindent}{0pt}%
+    \noindent{\LARGE\textbf{\cons@hmain}}\par
+    \vspace{1cm}%
+    \noindent\cons@self\par
+    \vspace{8mm}%
+    \noindent\textbf{\cons@studentnamelbl}\space--\space\@author\par
+    \vspace{2.5mm}%
+    \ifgroupwork
+        \noindent\textbf{\cons@studentnamelbl}\space--\space\secauthor\par
+        \vspace{2.5mm}%
+    \fi
+    \noindent\textbf{\cons@regnolbl}\space--\space\reg@num\par
+    \vspace{24mm}%
+    \noindent
+    \begin{minipage}[t]{0.52\textwidth}%
+        \raggedright
+        \textbf{\cons@signcaption}\space\hrulefill
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.42\textwidth}%
+        \raggedleft
+        \textbf{\cons@datecaption}\space\decl@signeddate
+    \end{minipage}\par
+    \vspace{1cm}%
+    \setlength{\parindent}{\tindent}%
 }
 
 \newcommand*{\thesisprintacknowledgments}{%
@@ -255,13 +238,8 @@
 
         \vskip 3.5mm
         \raggedleft
-        \@author \ifgroupwork~and \secauthor\fi, \@date
 
         \raggedright
         \vfill
-        \ifnoip
-        \else
-            \noindent\textit{\cons@ip}
-        \fi
     \end{abstractstyle}%
 }

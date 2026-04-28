@@ -1,22 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % thesisterms.sty
 %
-% (c) Lucerne University of Applied Sciences and Arts
-%
-% A small style package for HSLU theses. It defines standard terms and clauses
-% used for HSLU thesis in english and german.
-%
-% Secondly, it comprises few helpful customized commands for more standardized
-% thesis appearance.
-%
-% Created for HSLU by Ramón Christen 2025
-% 
-%   v1.0    21-03-2025:     Original version
-%   v2.0    22-09-2025:     Extensions for continuous education
-%   v2.1    29-09-2025:     Extended for WIPRO
-%   v2.2    10-10-2025:     Minor corrections for WIPRO
-%   v2.3    29-01-2026:     Updated sworn declaration
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -114,6 +98,10 @@
 \newcommand*{\setConsSign}[1]{\def\cons@sign{#1}}
 \newcommand*{\setConsThanks}[1]{\def\cons@thanks{#1}}
 \newcommand*{\setConsIp}[1]{\def\cons@ip{#1}}
+\newcommand*{\setConsStudentNameLbl}[1]{\def\cons@studentnamelbl{#1}}
+\newcommand*{\setConsRegNoLbl}[1]{\def\cons@regnolbl{#1}}
+\newcommand*{\setConsSignCaption}[1]{\def\cons@signcaption{#1}}
+\newcommand*{\setConsDateCaption}[1]{\def\cons@datecaption{#1}}
 
 % general terms derived from individual declaration
 \def\thesistypetxt{\thesisTerm{\bachelorthesis}{\masterthesis}{\casthesis}{\sasthesis}{\wiprothesis}}
@@ -139,9 +127,9 @@
     \setAcceptTxt{Accepted by \depname{} of \uniname{} upon the recommendation of:}
     \setSignSupervisor{Supervisor}
     \setSignFacDean{Faculty Dean}
-    \setHSummary{Summary}
+    \setHSummary{ABSTRACT}
     
-    \setConsHmain{Declaration}
+    \setConsHmain{DECLARATION}
     \setConsHi{\thesistypetxt{} at \uniname\\[10pt] \depname}
     \setConsTitle{Title of \thesistypetxt{}}
     \setConsStudent{Name of Student}
@@ -154,53 +142,15 @@
     \setConsHii{Code/Thesis Classification}
     \setConsPublic{Public (Standard)}
     \setConsConfidential{Private}
-    \setConsHiii{Declaration}
+    \setConsHiii{DECLARATION}
     \setConsSelf{I hereby declare that I have completed this work alone, independently, and without any unauthorized or external help. All cited sources, literature, and aids (in particular artificial intelligence or other instruments) have been used in compliance with copyright and data protection laws, and passages taken verbatim or in substance have been identified as such. The client's confidentiality interests have been preserved, and the intellectual property rights of the Lucerne University of Applied Sciences and Arts have been respected.}
     \setConsSign{Place/Date, Signature}
-    \setConsThanks{Expression of thanks and gratitute}
+    \setConsStudentNameLbl{Student name}
+    \setConsRegNoLbl{Registration number}
+    \setConsSignCaption{Signature:}
+    \setConsDateCaption{Date:}
+    \setConsThanks{ACKNOWLEDGMENT}
     \setConsIp{Intellectual property of the degree programs of the \uniname, FH Zentralschweiz, in accordance with Student Regulations: \href{https://srl.lu.ch/app/de/texts_of_law/521/versions/4065}{Studienordnung}}
-}
-
-% Declare german terms
-%%%%%%%%%%%%%%%%%%%
-\newcommand*{\setGermanTerms}{
-    \setBachelorThesis{Bachelorarbeit}
-    \setMasterThesis{Masterarbeit}
-    \setCasThesis{Transfer Arbeit}
-    \setWiproThesis{Wirtschaftsprojekt}
-    \setLogo{figs/HSLU_Logo_DE_Schwarz_cmyk.eps}
-    \setUniName{Hochschule Luzern}
-    \setUniCountry{Schweiz}
-    \setDepName{Informatik}
-    \setAcademicTitle{\academicgrade{} in \studyprg{}}
-    \setPresentedTo{vorgelegt am Departement \depname{} der \uniname{} (\unicountry)}
-    \setPresentedToAcGrade{\presentedto in Anbetracht zur Erreichung des akademischen Grades \emph{\academictitle}}
-    \setBy{von}
-    \setFrom{von}
-    \setAcceptTxt{Angenommen von \depname{} der \uniname{} (\unicountry) auf Empfehlung von:}
-    \setSignSupervisor{Betreuer}
-    \setSignFacDean{Fakultätsleiter}
-    \setHSummary{Kurzfassung}
-    
-    \setConsHmain{Erklärung}
-    \setConsHi{\thesistypetxt{} an der \uniname{} - \depname}
-    \setConsTitle{Titel}
-    \setConsStudent{Studentin/Student}
-    \setConsStudyTopic{Studiengang}
-    \setConsYear{Jahr}
-    \setConsDefYear{Abschlussjahr}
-    \setConsSupervisor{Betreuungsperson}
-    \setConsExpert{Expertenperson}
-    \setConsIndPartner{Auftraggeberin/Auftraggeber}
-    \setConsHii{Codierung/Klassifizierung der Arbeit}
-    \setConsPublic{Öffentlich (Normalfall)}
-    \setConsConfidential{Vertraulich}
-    \setConsHiii{Eidesstattliche Erklärung}
-    \setConsSelf{Ich erkläre hiermit, dass ich die vorliegende Arbeit selbständig und ohne unerlaubte fremde Hilfe angefertigt habe. Alle verwendeten Quellen, Literatur und Hilfsmittel (insbesondere künstliche Intelligenz oder sonstige verwendete Instrumente) wurden urheberrechts- und datenschutzkonform verwendet und wörtlich oder inhaltlich entnommene Stellen als solche kenntlich gemacht. Das Ver-traulichkeitsinteresse des Auftraggebers wurde gewahrt und die Urheberrechtsbestimmungen der Hochschule Luzern respektiert.}
-    \setConsSign{Ort/Datum, Unterschrift}
-    \setConsThanks{Verdankung}
-    \setConsIp{Geistiges Eigentum gemäss der \href{https://srl.lu.ch/app/de/texts_of_law/521/versions/4065}{Studienordnung} für die Ausbildung\\
-    an der \uniname, FH Zentralschweiz}
 }
 
 % set default values for options
