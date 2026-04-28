@@ -91,6 +91,8 @@
 \newlist{todolist}{itemize}{2}
 \setlist[todolist]{label=$\square$}
 
+\RequirePackage{fancyhdr}
+
 
 % commands
 %%%%%%%%%%%%%%%%
@@ -103,22 +105,56 @@
 \newcommand*{\declarationsigneddate}[1]{\def\decl@signeddate{#1}}
 \def\decl@signeddate{\defensedatevar}
 
+% Header / footer metadata (set in thesis.tex)
+% \projectshortname{...}: short label shown in the header (left)
+% \footerauthortag{...}:  fallback for footer left when \registrationnumber is empty
+\newcommand*{\projectshortname}[1]{\def\proj@short{#1}}
+\def\proj@short{}
+\newcommand*{\footerauthortag}[1]{\def\footer@tag{#1}}
+\def\footer@tag{}
+\newcommand*{\thesis@footerleft}{%
+    \ifx\reg@num\@empty\footer@tag\else\reg@num\fi
+}
+
 % Package Body
 %%%%%%%%%%%%%%%%
 % set up the page dimensions. This assumes a4 paper.
-% vertical
+% vertical (\headheight raised to 14.5pt to fit fancyhdr running header text)
 \voffset -15mm
 \topmargin 0mm
-\headheight 5mm
+\setlength{\headheight}{14.5pt}
 \headsep 12.5mm
 \textheight 235mm
 
-% horizontal
-\oddsidemargin 10mm
-\evensidemargin 0mm
-\textwidth 147mm
+% horizontal: 1 in left and right margins (symmetric)
+\setlength{\hoffset}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\textwidth}{\dimexpr\paperwidth-2in\relax}
 
 \reversemarginpar
+
+% Header / footer layout (guidelines: short project name (L), chapter title (R);
+% registration / ID (footer L), page number (footer C); no rules)
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhf{}
+\fancyhead[L]{\proj@short}
+\fancyhead[R]{\leftmark}
+\fancyfoot[L]{\footnotesize\thesis@footerleft}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Mirror fancy on chapter opening pages (book sets \thispagestyle{plain} there)
+\fancypagestyle{plain}{%
+    \fancyhf{}%
+    \fancyhead[L]{\proj@short}%
+    \fancyhead[R]{\leftmark}%
+    \fancyfoot[L]{\footnotesize\thesis@footerleft}%
+    \fancyfoot[C]{\thepage}%
+    \renewcommand{\headrulewidth}{0pt}%
+    \renewcommand{\footrulewidth}{0pt}%
+}
 
 \DeclareFontFamily{\encodingdefault}{\ttdefault}{\hyphenchar\font=`\-} % Allow hyphen in texttt
 
@@ -126,6 +162,7 @@
 \newlength\tindent
 \newenvironment{abstractstyle}[1]{%
     \cleardoublepage
+    \markboth{#1}{}%
     \setlength{\tindent}{\parindent}%
     \setlength{\parindent}{0pt}%
     \noindent{\LARGE\textbf{#1}}\par
@@ -138,47 +175,71 @@
 % title page
 \renewcommand*{\maketitle}{%
     \begin{titlepage}%
+        % grant extra vertical room so the title block does not overflow
+        % the standard \textheight and obscure the bottom border
+        \enlargethispage*{40mm}%
+
+
+        % decorative page border (top edge follows the text shift)
+        % \begin{tikzpicture}[remember picture,overlay]
+        %     \draw[line width=0.5pt]
+        %         ([shift={(15mm,-2mm)}]current page.north west)
+        %         rectangle
+        %         ([shift={(-15mm,15mm)}]current page.south east);
+        % \end{tikzpicture}%
+
         \begin{center}%
-            \begin{figure}
+            % title page top margin (cancels class-wide offsets, then trims further)
+            \vspace*{\dimexpr -\voffset-\topmargin-\headheight-\headsep-10mm\relax}%
+
+            {\large \depname \par}
+            \vskip 5mm
+            {\normalsize In Collaboration with \par}
+            \vskip 5mm
+            {\large \textbf{\uniname, \unicountry} \par}
+
+            \vskip 12mm
+            \includegraphics[width=0.38\textwidth]{\logo}
+
+            \vskip 16mm
+            \begin{minipage}{0.88\textwidth}
                 \centering
-                    \includegraphics[height=.07\textwidth,valign=t]{\logo}
-                \hfill
-                \vspace{20mm}
-            \end{figure}
-            
-            {\large \depname \par \uniname{} (\unicountry)}
-            
-            \vskip 20mm%
-            {\LARGE \textsc \@title \\ \subtit \vskip \baselineskip \par}%
-        
-            \vskip 20mm
-            {\LARGE \textsc \thesistypetxt \par}
-            \vskip 3mm
-            {\small \fullstop{\ifshortpresdec\presentedto\else\presentedtoacgrade\fi}}
-        
-            \vskip 20mm
-            {\by \par}
-            \vskip 5mm
-            {\LARGE \textbf{\@author \ifgroupwork~and \secauthor\fi} \par}%
-            \vskip 5mm
-            {\from \par}
-            \vskip 5mm
-            {\LARGE \orig}
-        	
-            \vfill%
-            
-            % {\textsc Thesis No.: \thesisnum
-            % \par Uniprint
-            % \par \@date}
-            
+                \large\bfseries \@title
+            \end{minipage}\par
+
+            \vskip 22mm
+            {\normalsize A dissertation by \par}
+            \vskip 4mm
+            {\large \textbf{\@author \ifgroupwork{} and \secauthor\fi} \par}
+            \vskip 2mm
+            {\small \reg@num \par}
+
+            \vskip 18mm
+            {\normalsize Supervised by \par}
+            \vskip 4mm
+            {\large \textbf{\supervisorvar} \par}
+            \vskip 4mm
+
+            \vfill
+
+            \begin{minipage}{0.88\textwidth}
+                \centering
+                \normalsize \fullstop{\ifshortpresdec\presentedto\else\presentedtoacgrade\fi}
+            \end{minipage}\par
+            \vskip 6mm
+            {\normalsize \textbf{\@date} \par}
+
+            % leave clear space above the bottom border so it stays visible
+            \vspace*{20mm}
         \end{center}
     \end{titlepage}%
     
     % set roman page numbering for preamble
     \pagenumbering{gobble}
 
-    % page: acceptance sheet
+    % page: acceptance sheet (kept blank: no fancy header/footer)
     \ifacceptsheet
+        \thispagestyle{empty}
         \noindent \accept@txt
         \jurymembers
     
@@ -204,6 +265,7 @@
 
 \newcommand*{\thesisprintdeclaration}{%
     \cleardoublepage
+    \markboth{\cons@hmain}{}%
     \setlength{\tindent}{\parindent}%
     \setlength{\parindent}{0pt}%
     \noindent{\LARGE\textbf{\cons@hmain}}\par

@@ -58,12 +58,13 @@
 %----------------------------------------------------------------------------------------
 %	INSTITUTION CUSTOMIZATION (GENERIC PLACEHOLDERS)
 %----------------------------------------------------------------------------------------
-\setUniName{University Name}
-\setUniCountry{Country}
-\setDepName{Department Name}
+\setLogo{figs/logo.jpg}
+\setDepName{INFORMATICS INSTITUTE OF TECHNOLOGY}
+\setUniName{UNIVERSITY OF WESTMINSTER}
+\setUniCountry{UK}
 \setAcademicTitle{Degree Program Name}
-\setPresentedTo{presented to Department Name}
-\setPresentedToAcGrade{presented in consideration for the award of a degree}
+\setPresentedTo{Submitted in partial fulfillment of the requirements for the B.Eng. (Hons) Software Engineering degree at the University of Westminster}
+\setPresentedToAcGrade{Submitted in partial fulfillment of the requirements for the B.Eng. (Hons) Software Engineering degree at the University of Westminster}
 \setBachelorThesis{Thesis}
 \setMasterThesis{Thesis}
 \setCasThesis{Thesis}
@@ -113,7 +114,8 @@
 \supervisor{Prof. Dr. Supervisor Name}                % name of supervisor
 \dean{Prof. Dr. Dean Name}                            % name of faculty dean
 
-\registrationnumber{[University of Westminster ID] / [IIT ID]}
+\registrationnumber{20562027}
+\projectshortname{STOXLK}        % shown in the page header (left)
 \declarationsigneddate{April 28\textsuperscript{th}, 2026}
 
 \acknowledgments{I would like to thank my supervisor, colleagues, and family for their continuous support throughout this research project.}
@@ -123,6 +125,7 @@
 %	BEGIN DOCUMENT AND CREATE TITLEPAGE
 %----------------------------------------------------------------------------------------
 \maketitle
+\pagestyle{fancy}
 
 
 %----------------------------------------------------------------------------------------
@@ -145,12 +148,16 @@
 
 
 % table of contents ----------------------------------------------------------------------
-
+% book's \tableofcontents / \listoffigures / \listoftables and the glossaries
+% printer call \@mkboth with \MakeUppercase{...}; neutralize it locally so the
+% running head stays title-case (matches guidelines: "Introduction", not "INTRODUCTION").
+\begingroup
+\renewcommand{\MakeUppercase}[1]{#1}%
 \tableofcontents
 \listoffigures
 \listoftables
-% print list of acronyms and glossary
 \printnoidxglossaries
+\endgroup
 
 
 
