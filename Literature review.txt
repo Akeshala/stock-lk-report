@@ -1,0 +1,79 @@
+CHAPTER 2 – LITERATURE REVIEW
+📏 Length: ~15 pages
+📚 Citation Guidance: 1 citation per factual sentence; use recent (≤5 years) authoritative sources (ACM, IEEE, Springer, Elsevier).
+🎯 Goal: Critically analyse the existing body of knowledge, situate your work within it, identify gaps, and build a logical bridge to your methodology.
+
+2.1 Chapter Overview
+Briefly explain the purpose of the literature review and the structure of this chapter in 3–4 sentences. Example flow:
+“This chapter begins with a conceptual mapping of the research area, followed by an in-depth review of the problem domain. It then examines relevant technologies and existing work through thematic analysis, evaluates benchmarking strategies, and concludes with a synthesis that leads to the proposed research methodology.”
+
+2.2 Concept Map
+Present a concept map that visually links major ideas, technologies, and sub-domains relevant to your research.
+Keep the map clean and hierarchical, ideally using software such as XMind, draw.io, or Miro.
+Use the map to clarify relationships between broad domain concepts and specific research components.
+Insert the figure here with a cross-reference to the appendix.
+🖼 Figure 2.1 – Concept Map of Research Domain (placeholder)
+Move the full figure to Appendix I, and write something like: “Figure 2.1 illustrates the conceptual structure of the domain; the detailed version is provided in Appendix I.”
+
+2.3 Problem Domain Review (~4 pages)
+Establish the theoretical and contextual foundations of your topic.
+2.3.1 Introduction to the Domain
+Start broad: introduce the overarching research domain (e.g., cybersecurity, medical imaging, XAI, anomaly detection).
+Define key terms and concepts using authoritative sources.
+Keep it concise but clear (≈1 page).
+2.3.2 Key Challenges / Sub-areas
+Organise the problem domain into thematic sub-areas, typically 3–5. For each:
+Define the concept clearly.
+Explain why it is important.
+Support with recent citations.
+End with a linking sentence to the next sub-area.
+Example sub-areas:
+Data heterogeneity
+Interpretability and transparency
+Domain-specific constraints (e.g., real-time performance)
+Adversarial robustness
+
+2.3.3 Existing Frameworks / Standards / Domain Approaches
+Summarise relevant frameworks, standards, and protocols (e.g., GDPR, BCS Code of Conduct, NIST, standard evaluation pipelines).
+Explain how these shape or constrain research design.
+Blend academic literature with regulatory/professional documents.
+
+2.3.4 Proposed Architecture (Positioning)
+Conclude the Problem Domain section by presenting your high-level conceptual architecture.
+🖼 Figure 2.2 – Proposed Conceptual Architecture (placeholder)
+Describe each component briefly.
+Link back to the domain challenges above.
+This serves as a bridge to Chapter 3 (Methodology).
+
+2.4 Technological Review (~4 pages)
+Critically examine relevant technologies stage by stage, not just the final algorithm. Example structure for ML projects:
+Data Acquisition & Pre-processing (e.g., normalization, augmentation, anonymization)
+Model Architectures (e.g., CNNs, Transformers, Federated frameworks)
+Hyperparameter Tuning approaches
+Evaluation Metrics used in the field
+For non-ML projects (e.g., security), this could involve protocol standards, cryptographic primitives, system architectures, or forensic toolchains.
+📌 Tip: Use sub-sections for each stage, and focus on critical analysis, not summaries.
+
+2.5 Existing Work (~4 pages)
+Use thematic analysis instead of one-paper-per-paragraph summaries.
+2.5.1 Thematic Grouping
+Identify major themes in the literature (e.g., methodological innovations, application domains, evaluation techniques).
+Discuss multiple works together under each theme, highlighting trends and divergences.
+2.5.2 Cross-theme Linking
+Acknowledge overlapping works between themes.
+Use linking sentences to maintain logical flow.
+📌 Minimum 1 citation per sentence.
+
+2.6 Evaluation and Benchmarking (~3 pages)
+Critically assess how existing work is evaluated:
+Datasets used (scope, diversity, availability).
+Benchmarks and protocols.
+Metrics and whether they are appropriate for the domain.
+Limitations in evaluation methods.
+
+2.7 Chapter Summary
+Summarise key takeaways:
+Main themes in the literature
+Identified gaps
+Positioning of your research relative to prior work
+Smooth transition to Chapter 3.
