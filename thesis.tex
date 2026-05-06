@@ -46,6 +46,7 @@
 \usepackage{siunitx}
 \usepackage{tabularx}
 \usepackage{tikzscale}
+\usepackage{natbib}
 
 
 \hypersetup{hidelinks}                                % hide red border in hyperlinks
@@ -58,7 +59,7 @@
 %----------------------------------------------------------------------------------------
 %	INSTITUTION CUSTOMIZATION (GENERIC PLACEHOLDERS)
 %----------------------------------------------------------------------------------------
-\setLogo{figs/logo.jpg}
+\setLogo{figs/logo.png}
 \setDepName{INFORMATICS INSTITUTE OF TECHNOLOGY}
 \setUniName{UNIVERSITY OF WESTMINSTER}
 \setUniCountry{UK}
@@ -105,11 +106,11 @@
 % \addAcceptsheet
 \jury{                                                % members of the jury
     \begin{itemize}
-        \item Mr. PPG Dinesh Asanka (Thesis Supervisor);
+        \item Mr. P.P.G. Dinesh Asanka (Thesis Supervisor);
     \end{itemize}
 }
 
-\supervisor{Mr. PPG Dinesh Asanka}                % name of supervisor
+\supervisor{Mr. P.P.G. Dinesh Asanka}                % name of supervisor
 % \dean{Prof. Dr. Dean Name}                            % name of faculty dean
 
 \registrationnumber{20562027}
@@ -130,15 +131,14 @@
 %	PREAMBLE
 %----------------------------------------------------------------------------------------
 \begin{abstractstyle}{\hsummary}
-    This thesis investigates \textit{[research topic]} in the context of \textit{[application domain]}. The study addresses the core problem of \textit{[problem statement]}, which remains insufficiently resolved due to \textit{[gap 1]} and \textit{[gap 2]}. This limitation motivates the need for a more reliable and practically applicable solution.
 
-    To address this problem, the research adopts a design-develop-evaluate approach. The methodology combines \textit{[data sources or context]}, \textit{[methods or architecture]}, and \textit{[evaluation strategy]} to ensure methodological rigor and real-world relevance. The proposed approach is designed to align with the stated research questions and objectives.
+Fundamental analysis is the cornerstone of value-based investing, yet producing a thorough, well-structured analytical report on a company demands the time and expertise of a trained equity analyst, a resource that most retail investors cannot afford. The current generation of AI-powered investment tools has done little to close this gap: much of the published work concentrates on short-term price prediction, which the classical investment literature would classify not as investment but as speculation. This paper presents an Agentic AI system that produces template-based fundamental analysis reports for publicly listed companies. The system decomposes the analytical workflow into specialised agents, each responsible for a specific section of a standardised report template, including financial statement analysis, regulatory filing summarisation, macroeconomic contextualisation, and integrated valuation commentary. Templates serve a dual purpose: they enforce coverage of every dimension a competent analyst would consider, and they constrain the language model's output to grounded, comparable, and auditable claims rather than free-form recommendations. The system is built on a multi-agent orchestration framework with retrieval-augmented access to filings, earnings call transcripts, and macroeconomic data, and it deliberately separates numerical extraction from natural-language synthesis to mitigate hallucination risk. By focusing exclusively on the company's intrinsic situation rather than its price trajectory, the system places itself unambiguously on the investment side of the classical distinction. The contribution is a transparent, reproducible pipeline that makes structured fundamental analysis accessible to retail investors while preserving the auditability institutional users require. 
 
-    The study delivers \textit{[artifact or system outcome]} and evaluates its performance against \textit{[baseline or benchmark criteria]}. The findings are expected to contribute to \textit{[research-domain contribution]} and \textit{[problem-domain contribution]}, while also identifying key limitations and future directions for extended investigation.
+    \vspace{1cm}
 
-    \textbf{ACM Subject Descriptors:} \textit{[descriptor 1]}; \textit{[descriptor 2]}; \textit{[descriptor 3]}.
+    \textbf{ACM Subject Descriptors:} Computing methodologies $\rightarrow$ Multi-agent systems; Natural language generation; Information extraction; \textbullet~Information systems $\rightarrow$ Decision support systems; Question answering; \textbullet~Applied computing $\rightarrow$ Economics; Document management and text processing.
 
-    \textbf{Keywords:} \textit{[keyword 1]}; \textit{[keyword 2]}; \textit{[keyword 3]}; \textit{[keyword 4]}; \textit{[keyword 5]}.
+    \textbf{Keywords:} Agentic AI, fundamental analysis, multi-agent systems, template-based generation, retrieval-augmented generation.
 \end{abstractstyle}
 
 \thesisprintdeclaration
@@ -152,9 +152,9 @@
 \begingroup
 \renewcommand{\MakeUppercase}[1]{#1}%
 \tableofcontents
-\listoffigures
+% \listoffigures
 \listoftables
-\printnoidxglossaries
+% \printnoidxglossaries
 \endgroup
 
 
@@ -180,10 +180,10 @@
 %----------------------------------------------------------------------------------------
 %	APPENDIX
 %----------------------------------------------------------------------------------------
-\appendix
+% \appendix
 
-\input{chapters/appendix_overview}
+% \input{chapters/appendix_overview}
 
-\glsaddallunused                                % add all unused items to glossary
+% \glsaddallunused                                % add all unused items to glossary
 
 \end{document}

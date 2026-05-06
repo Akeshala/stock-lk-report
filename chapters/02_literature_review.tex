@@ -1,62 +1,450 @@
 \chapter{Literature review}
 \section{Chapter overview}
 
-The application of Artificial Intelligence (AI) in financial markets is rapidly increasing, transforming a domain that has traditionally relied on manual, time-consuming, and repetitive processes [7]. 
+This chapter situates the proposed research within two long-standing
+traditions of stock analysis. It begins by revisiting the conceptual
+distinction between \emph{fundamental analysis} and \emph{technical
+analysis}, drawing on \citeauthor{graham2003}'s foundational separation
+of investment from speculation \citep{graham2003}, before mapping how
+recent advances in agentic artificial intelligence (AI) have begun to
+reshape both. The review is structured thematically rather than
+paper-by-paper: it first establishes the problem domain and the gap
+that fundamental analysis poses for automation, then critically examines
+the technological building blocks of agentic systems, before turning to
+existing work on (i)~agentic systems for fundamental analysis, which
+is the focus of the proposed system, and (ii)~agentic approaches to
+sentiment analysis, which dominate the technical-analysis side of the
+literature. The chapter closes with a critical view of evaluation
+practice and a synthesis.
 
-Financial market analysis literature can broadly be divided into two main categories: technical analysis and fundamental analysis. Technical analysis (TA) focuses on identifying market trends and price patterns to forecast future price movements. In contrast, fundamental analysis (FA) seeks to determine the intrinsic value of a company by examining its financial performance, business fundamentals, and the influence of external economic and industry-related factors. Technical and fundamental analysis are both equally important and complementary approaches in financial market analysis [8][10]. 
+% \section{Concept map}
+% Insert a conceptual map figure and provide a brief explanation of concept relationships.
 
-\section{Concept map}
-Insert a conceptual map figure and provide a brief explanation of concept relationships.
-
-\begin{figure}[H]
-    \centering
-    \fbox{\rule{0pt}{2in}\rule{0.9\linewidth}{0pt}}
-    \caption{Concept map of the research domain (placeholder)}
-    \label{fig:concept-map}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \fbox{\rule{0pt}{2in}\rule{0.9\linewidth}{0pt}}
+%     \caption{Concept map of the research domain (placeholder)}
+%     \label{fig:concept-map}
+% \end{figure}
 
 \section{Problem domain review}
-\subsection{Introduction to the domain}
-Define the overarching domain and its key terms.
 
-\subsection{Key challenges and sub-areas}
-Review major thematic challenges relevant to your problem.
+\subsection{Two Traditions: Fundamental Analysis and Price Prediction}
+\label{sec:twotraditions}
 
-\subsection{Existing frameworks, standards, and domain approaches}
-Summarize applicable standards, regulations, and best-practice frameworks.
+Modern stock analysis still rests on the dichotomy that
+Benjamin Graham drew more than seventy years ago. In
+\emph{The Intelligent Investor}, \citet{graham2003} argues that an
+investment operation is one which, on thorough analysis, promises
+safety of principal and an adequate return, while operations not
+meeting these requirements are speculative. Fundamental analysis,
+in this tradition, is the disciplined assessment of a business based on
+its earnings power, balance-sheet strength, competitive position
+and future profitability and is deliberately price-agnostic;
+the share price enters the picture only at the end, when the analyst
+compares intrinsic value to the quoted price to decide whether a
+margin of safety exists \citep{graham2003}. Technical analysis takes
+the opposite stance: it treats the price series itself as the primary
+object of study and tries to forecast future prices from past prices,
+volumes and, increasingly, the mood of market participants
+\citep{murphy1999}. \citet{graham2003} is unambiguous that activities
+of this second kind, however sophisticated, fall on the speculative
+side of the line.
 
-\subsection{Proposed architecture positioning}
-Position your high-level architecture against the reviewed domain context.
+This distinction matters for the design of any AI-driven analyst,
+because the two traditions ask categorically different questions.
+A fundamental engine is asked, in effect, what the company is worth;
+a technical engine is asked where the price is heading next. Recent
+agentic systems often blur this line by bundling fundamental,
+sentiment and technical signals into a single recommendation
+\citep{mattaparty2025,setyowidodo2025}, but the underlying epistemic
+difference persists, and it is the choice of which question to
+answer that determines what data, what reasoning and what evaluation
+are appropriate.
 
-\begin{figure}[H]
-    \centering
-    \fbox{\rule{0pt}{2in}\rule{0.9\linewidth}{0pt}}
-    \caption{Proposed conceptual architecture (placeholder)}
-    \label{fig:proposed-architecture}
-\end{figure}
+\subsection{Why Fundamental Analysis Resists Automation}
+\label{sec:whyresist}
 
-\section{Technological review}
-\subsection{Data acquisition and preprocessing}
-Critically review data handling techniques used in comparable work.
+Fundamental analysis is a deceptively difficult task to automate.
+The raw inputs like annual reports, 10-K and 10-Q filings,
+earnings-call transcripts, management commentary, industry studies
+and macroeconomic releases are heterogeneous, long, frequently
+qualitative, and arrive at different cadences
+\citep{fatouros2025}. Equity-research practice typically combines
+a study of the business model, the financial statements and recent
+conference calls into a single judgement \citep{dongare2024}, an
+integration that is hard to encode in conventional rule-based or
+purely statistical pipelines. Earlier machine-learning approaches
+sidestepped this difficulty by reducing fundamentals to a small set
+of accounting ratios and treating the problem as a classification
+of price direction \citep{bustos2020}, which arguably crosses
+Graham's line into speculation by tying the analysis directly to
+short-horizon price moves.
 
-\subsection{Model or system architectures}
-Compare relevant architecture choices and trade-offs.
+Even for large language models (LLMs), three obstacles recur. First,
+context-window limits prevent the direct ingestion of long filings
+such as 10-Ks or detailed macroeconomic reports
+\citep{fatouros2025}. Second, LLMs are known to hallucinate
+numerical values and to handle tables inconsistently, which is a
+serious problem in financial fundamentals where precision matters
+\citep{saravanan2026}. Third, monolithic LLMs conflate causation
+with correlation when reasoning over financial time series,
+undermining the auditability that fundamental decisions require
+\citep{saravanan2026}. These limitations have pushed researchers
+towards agentic architectures that decompose fundamental analysis
+into specialised sub-tasks.
 
-\subsection{Tuning and optimization approaches}
-Review methods used to optimize performance and robustness.
+\subsection{Frameworks Shaping the Design Space}
+\label{sec:frameworks}
 
-\subsection{Evaluation metrics used in prior work}
-Evaluate suitability of common metrics for your project context.
+Several frameworks now shape how agentic systems are built in this
+space. Multi-agent orchestration libraries such as AutoGen and
+CrewAI provide patterns for role-based collaboration, tool use and
+conversational delegation \citep{saravanan2026,setyowidodo2025}.
+Retrieval-Augmented Generation (RAG) has become the standard
+mechanism for grounding LLM reasoning in long financial documents
+\citep{han2024}. On the empirical side, financial-domain language
+models such as FinBERT \citep{huang2023finbert} and finance-specific
+large models such as BloombergGPT and FinGPT have established
+reusable text-encoding components that downstream agentic systems
+routinely call upon \citep{saravanan2026}. Surveys of LLM
+applications in finance offer a useful map of the territory but are
+necessarily broad rather than prescriptive \citep{liu2024}.
+Industry-facing reviews further confirm that agentic AI is moving
+from an experimental capability to a deployment-stage technology in
+financial services, with autonomy, adaptability and coordination
+identified as its three defining characteristics \citep{bhat2025}.
 
-\section{Existing work}
-\subsection{Thematic grouping}
-Group studies by themes and compare their findings.
+\subsection{Positioning of the Proposed System}
+\label{sec:positioning}
 
-\subsection{Cross-theme linking}
-Explain overlaps and differences across themes and methods.
+Against this backdrop, the proposed system focuses deliberately on
+the fundamental side of Graham's divide. It adopts an agentic
+architecture in which specialised agents read filings, financial
+statements, earnings calls and macroeconomic context, and synthesise
+these into a view of business quality and future profitability without taking a stand on near-term price. Sentiment, which is
+treated extensively in the literature as a driver of price prediction
+\citep{bollen2011,tetlock2007}, is therefore reviewed in
+Section~\ref{sec:sentimentagents} as part of the technical-analysis
+tradition, not as a core component of the proposed fundamental
+engine.
 
-\section{Evaluation and benchmarking}
-Critically analyze datasets, protocols, metrics, and evaluation limitations.
+% figures showing proposed architecture
 
-\section{Chapter summary}
-Synthesize key gaps and connect them to Chapter 3.
+\section{Technological Review}
+\label{sec:techreview}
+
+\subsection{Large Language Models as Reasoning Engines}
+\label{sec:llms}
+
+LLMs have become the de facto reasoning substrate for agentic systems
+in finance. Their appeal lies in three capabilities: ingesting long,
+mixed-modal text; generating natural-language rationales; and
+following structured prompts. \citet{papasotiriou2024aiinvestment} show that
+GPT-4, when prompted in a Chain-of-Thought style and given the same
+inputs as a human analyst, can produce stock ratings that beat
+consensus analyst ratings on forward-return mean absolute error.
+Critically, they find that the most accurate variant is the one fed
+company fundamentals, with news and sentiment offering only marginal
+short-term gains \citep{papasotiriou2024aiinvestment}. This empirical result is
+consistent with Graham's claim that fundamentals carry the
+long-horizon signal, while sentiment is a short-horizon overlay
+\citep{graham2003}.
+
+Backbone choice nevertheless matters. \citet{yu2025finmem} compare
+GPT-3.5, GPT-4, GPT-4-Turbo and Llama-2 inside the same agent
+framework and report that GPT-4-class models consistently dominate on
+cumulative return and Sharpe ratio. Such backbone sensitivity is a
+reminder that LLM-based fundamental analysis cannot be evaluated in
+isolation from the underlying model, and that reproducibility
+requires explicit reporting of model versions, prompts and
+temperature settings.
+
+\subsection{Multi-Agent Orchestration Patterns}
+\label{sec:agentpatterns}
+
+Once an LLM is treated as a tool rather than a black-box solver, the
+question becomes how to coordinate several of them. \citet{han2024}
+formalise this as a question of agent group size and collaboration
+structure, and find empirically that single agents outperform
+multi-agent debates for fundamental analysis specifically, while
+ensemble structures dominate for the higher-level "buy or not"
+decision, achieving 66.7~per~cent binary accuracy and a 2.35~per~cent
+target-price error on Dow Jones 10-K filings. Building on these
+results, \citet{chen2025dda} propose a directed dual-agent design
+in which a subordinate agent specialises in fundamentals, sentiment
+or risk and a leader agent synthesises the output, reporting
+68.3~per~cent buy/not-buy accuracy and a 2.18~per~cent price error
+under a strong-leadership configuration with evidence that lean,
+vertically structured collaborations can outperform larger horizontal
+teams when coordination overhead is high.
+
+At the other end of the design spectrum, the GWise framework treats
+agents as nodes in a directed acyclic graph, with an LLM orchestrator
+selecting a subgraph and softmax-weighting agent outputs into a final
+trade signal \citep{rezaei2025gwise}. \citet{Cheng2025} similarly
+deploy specialised analyst, strategist, trader and risk-management
+agents within an AutoGen/CrewAI pipeline, reporting a Sharpe ratio
+of 2.38 against a buy-and-hold baseline of 1.23 on AAPL. These
+designs share a common premise that the structure of agent
+communication is itself a design variable even though they answer
+it differently.
+
+\subsection{Retrieval, Memory and Domain Grounding}
+\label{sec:retrievalmemory}
+
+Two technical mechanisms recur in agentic finance systems:
+retrieval-augmented generation and explicit memory. RAG provides a
+way to ground LLM reasoning in documents that exceed the model's
+context window; \citet{han2024} encapsulate retrieval as a tool
+function that agents call autonomously, while \citet{fatouros2025}
+extend basic RAG with semantic chunking and Hypothetical Dense
+Embeddings (HyDE) to extract macroeconomic context from institutional
+reports, reporting precision of 1.00 and recall of 0.91 at top-7
+chunks. Memory mechanisms address a different limitation: the
+inability of stateless LLMs to retain time-varying signals across
+trading days. The FINMEM agent introduces a layered memory module that is shallow, intermediate and deep with distinct decay rates for
+daily news, quarterly 10-Q insights and annual 10-K insights,
+retrieved via similarity, recency and importance scores
+\citep{yu2025finmem}. The architecture is interesting because it
+consciously mirrors the cognitive structure of a human trader, and
+ablation studies show that both the memory module and the dynamic
+risk-profile setting contribute non-trivially to performance
+\citep{yu2025finmem}.
+
+\section{Existing Work}
+\label{sec:thematicreview}
+
+\subsection{Agentic AI for Fundamental Analysis}
+\label{sec:fundamentalagents}
+
+The most directly relevant strand of literature places fundamental
+analysis at the centre of an agentic pipeline. MarketSenseAI~2.0 is
+the most ambitious example: a five-agent system (News, Fundamentals,
+Dynamics, Macroeconomic, Signal) in which the Fundamentals agent
+itself orchestrates a three-layer chain over SEC filings,
+earnings-call transcripts and quarterly numerical data
+\citep{fatouros2025}. On the S\&P 100 over 2023--2024 this design
+produces a cumulative return of 125.9~per~cent against the index
+return of 73.5~per~cent, with a 16~per~cent higher Sortino ratio and
+an explicit alpha of 8.0--18.9~per~cent on the broader S\&P 500
+\citep{fatouros2025}. The result is notable not because of the
+headline return backtests of this length are easily flattered by
+survivorship bias but because the authors decompose returns
+using Carhart and Fama-French factor models and still find
+unexplained alpha attributable to the framework's qualitative
+reasoning.
+
+Other systems take a chatbot-first stance on fundamentals.
+\citet{dongare2024} build an LLM chatbot that ingests
+profit-and-loss statements, balance sheets, cash-flow reports and
+conference-call transcripts as PDFs, and answers fact-based,
+behavioural and advice-seeking questions with differing accuracy
+across question types. The system explicitly refuses speculative
+investment advice, which is in keeping with Graham's normative stance
+but limits its utility as a stand-alone analyst. FinQAPT pushes the
+same idea further with a three-module pipeline (FinPrimary,
+FinContext, FinReader) and a Dynamic N-shot Prompting method that
+achieves state-of-the-art 80.6~per~cent on the FinQA dataset at
+module level \citep{singh2024finqapt}. At the other end of the
+integration spectrum, \citet{saravanan2026} propose MAC, a
+neuro-symbolic three-agent system in which an Analyst harmonises
+noisy SME transactions to a financial ontology, a Quant performs
+causal inference using vector autoregression, Granger causality and
+the PC algorithm, and a Partner generates a strategic narrative
+grounded only in verified causal facts. The deliberate confinement
+of generative behaviour to the explanation stage is the most explicit
+attempt yet in this literature to address Graham's concern about
+disciplined, auditable analysis.
+
+A closely related cluster of work uses agents to reason over annual
+filings directly. \citet{han2024} demonstrate that a single
+fundamental agent reading a 10-K outperforms multi-agent debates for
+fundamental sub-tasks, and that ensemble strategies achieve the best
+target-price prediction error of 2.35~per~cent.
+\citet{mattaparty2025} combine personality-style agents inspired by
+Graham and Buffett with valuation, technical and sentiment agents in
+a unified pipeline; on AAPL the system reports an aggregate
+confidence score of 70.5~per~cent and a margin-of-safety calculation
+of $-88.51$~per~cent for the Graham agent, suggesting overvaluation.
+Although the architecture is wide-ranging, the use of a Graham-styled
+agent is symptomatic of how the field is reaching back to classical
+investment thought to discipline LLM behaviour. The Equity Research
+Chatbot of \citet{dongare2024} and the broader survey of agentic AI
+in finance by \citet{bhat2025} confirm that fundamental analysis is
+widely seen as the natural test bed for serious agentic deployments.
+
+\subsection{Agentic Approaches to Sentiment Analysis}
+\label{sec:sentimentagents}
+
+Sentiment analysis sits squarely on the technical-analysis side of
+Graham's divide because its purpose is to predict short-horizon
+price movements from the mood of market participants. The literature
+here is much larger than for fundamentals, and four sub-themes are
+worth distinguishing.
+
+\subsubsection{News-Driven Sentiment Agents}
+\label{sec:newssentiment}
+
+The earliest and still most common approach is to score financial
+news for tone and use this as a feature for a downstream model. The
+classical evidence that news content drives short-term returns is
+\citet{tetlock2007}. FinBERT \citep{huang2023finbert} operationalised
+this insight as a pre-trained encoder that has since become the
+default sentiment backbone for agentic systems. In recent agentic
+settings, sentiment is rarely a stand-alone module: it is one
+specialised agent among several. The News Agent in MarketSenseAI~2.0,
+for instance, condenses daily news into a progressive narrative that
+the downstream Signal Agent uses for short-term momentum
+\citep{fatouros2025}, and the Sentiment Analyst in the
+\citet{Cheng2025} framework generates tone scores that are fused with
+fundamental and technical signals before a trading decision is taken.
+Critically, when \citet{Papasotiriou2024} test sentiment in
+isolation, they find only a modest short-term predictive benefit and
+no significant gain over fundamentals at twelve and eighteen month
+horizons, an empirical reminder that sentiment's natural domain
+is short-horizon price prediction, not long-horizon valuation.
+
+\subsubsection{Social-Media and Retail-Investor Sentiment Agents}
+\label{sec:socialsentiment}
+
+A second sub-theme draws on the long-running line of work that began
+with \citet{bollen2011}, who showed that aggregate Twitter mood
+predicts the Dow Jones Industrial Average with a lag of three to four
+days. Modern agentic systems institutionalise this signal. The Social
+Media Analyst in the GWise framework parses Twitter, Reddit and
+StockTwits for retail tone \citep{rezaei2025gwise}, and the Sentiment
+Analyst Agent in \citet{mattaparty2025} extracts public sentiment
+from financial news and social media using FinBERT. These systems
+treat retail sentiment as a fast-moving, noise-prone but informative
+input to the trading decision rather than to the assessment of
+business value. The agentic angle adds little to the underlying
+signal but improves how it is aggregated and reconciled with other
+inputs.
+
+\subsubsection{Earnings-Call and Management-Tone Sentiment Agents}
+\label{sec:earningssentiment}
+
+A more recent and arguably more interesting strand uses agents to
+read earnings-call transcripts for managerial tone. The Earnings Call
+Analyst in the GWise framework applies natural language processing
+to chief executive and chief financial officer language to detect
+confidence or hesitation \citep{rezaei2025gwise}.
+\citet{bharadwaj2025} take this further by combining FinBERT-derived
+sentiment from quarterly reports, newsletters, earnings calls and
+press releases with a reinforcement-learning trader that uses
+Proximal Policy Optimisation, Deep Q-Network and Advantage
+Actor-Critic algorithms. They report that the inclusion of sentiment
+from authoritative financial sources improves directional accuracy,
+echoing earlier findings on the temporal evolution of earnings-call
+sentiment \citep{bharadwaj2025}. There is an interesting tension
+here: although earnings calls are clearly a fundamental source of
+information, sentiment-style processing of them collapses managerial
+commentary into a positive/negative score, discarding precisely the
+qualitative content that fundamental analysis would seek to
+interpret.
+
+\subsubsection{Heterogeneous Multi-LLM Sentiment Frameworks}
+\label{sec:hadsentiment}
+
+The fourth sub-theme is methodologically distinctive.
+\citet{xing2025had} argues, drawing on Minsky's theory of mind and
+emotions, that a single LLM cannot adequately capture the layered
+emotional content of financial text. The Heterogeneous Agent
+Discussion (HAD) framework instantiates several specialised LLM
+agents, each guided by a different linguistic or financial
+heuristic and uses a summative agent to reason over their
+aggregated discussion \citep{xing2025had}. Across six financial
+sentiment datasets the framework yields better accuracy than
+alternative multi-LLM settings, especially when the discussion
+content is substantial. The contribution is not a new sentiment
+lexicon but a design pattern: agentic disagreement, properly
+summarised, can be used as a feature rather than a defect. This
+finding interacts with \citeauthor{han2024}'s \citeyearpar{han2024}
+result that multi-agent debate is sometimes counterproductive for
+simple sub-tasks; together they suggest that the value of
+multi-agent architectures rises with task complexity, which sentiment
+around investor psychology arguably has.
+
+\subsection{Hybrid Systems and Cross-Paradigm Pipelines}
+\label{sec:hybrid}
+
+A growing number of systems explicitly mix fundamental, technical,
+sentiment and macroeconomic inputs. \citet{setyowidodo2025} use the
+CrewAI framework to orchestrate a fundamental agent (75~per~cent
+reported accuracy on long-term value) alongside a technical agent
+(50~per~cent, struggling with reversals) and a macroeconomic agent
+for the Indonesian market. The authors candidly observe that the
+technical agent is the weakest component, which is consistent with
+the wider literature on the difficulty of price-direction prediction.
+\citet{mashaly2025} integrate a multi-agent system over stock-market
+news with classical time-series models such as SARIMAX, LSTM and
+Time-MOE, using LLM-derived news ratings as exogenous variables in
+the regression layer; the design effectively treats sentiment as a
+covariate of price rather than as a substitute for fundamental
+judgement. Hybrid designs of this kind respect Graham's distinction
+operationally which is different signals enter the model in different
+ways even when the language of the papers does not.
+
+\section{Evaluation, Benchmarking and Critical Limitations}
+\label{sec:evaluation}
+
+A common feature of the empirical results above is generous
+backtesting. Most LLM-based investing strategies are evaluated on
+small numbers of well-known stocks (typically TSLA, AMZN, NFLX, MSFT)
+over short windows of three to twelve months \citep{Li2026FINSABER}.
+The recent FINSABER framework re-evaluates leading systems including
+FinMem and FinAgent on twenty years of multi-source data with
+explicit mitigation of survivorship, look-ahead and data-snooping
+biases, and reports that the apparent superiority of these systems
+disappears: neither FinMem nor FinAgent generates statistically
+significant alpha ($p > 0.34$ in all settings tested), and both
+underperform simple ARIMA and rule-based benchmarks on risk-adjusted
+metrics across bull, sideways and bear regimes
+\citep{Li2026FINSABER}. The implication is uncomfortable but
+important: the field's headline numbers cannot be taken at face
+value, and a serious agentic system aimed at fundamental analysis
+must be evaluated over multi-year horizons with delisted stocks
+included.
+
+Datasets used across the work surveyed here are also worth noting.
+Most studies rely on combinations of Yahoo Finance OHLCV data, Alpha
+Vantage, SEC EDGAR filings, NewsData.io, Reddit r/WallStreetBets and
+Bloomberg/Reuters news feeds
+\citep{mattaparty2025,bharadwaj2025,yu2025finmem}. The diversity of
+data supports rich agent design but complicates reproducibility,
+since few systems release the underlying news corpora due to
+licensing constraints. Evaluation metrics are increasingly
+standardised like cumulative return, annualised return, Sharpe ratio,
+Sortino ratio, maximum drawdown but task-level metrics for
+fundamental analysis specifically (such as target-price mean absolute
+error or buy/not-buy binary accuracy) remain study-specific
+\citep{han2024}.
+
+% =============================================================
+\section{Chapter Summary}
+\label{sec:summary}
+
+Three takeaways shape the methodology that follows. First, Graham's
+distinction between investment grounded in fundamentals and
+speculation grounded in price prediction remains analytically useful
+and is, if anything, sharpened by the new tools: agentic systems
+make it visible whether a design is asking what a business is worth
+or where its price will go next \citep{graham2003}. Second, the
+literature on agentic fundamental analysis like MarketSenseAI~2.0,
+MAC, FinQAPT, and the agent-collaboration studies of Han \citep{han2024}
+converges on a small set of design moves: specialise agents by data
+source; ground generation in retrieval and, where possible, in
+deterministic statistical methods; use memory and chain-of-thought
+to handle the multi-timeliness of financial data; and reserve
+generative behaviour for explanation rather than for numerical
+computation \citep{fatouros2025,han2024,saravanan2026,singh2024finqapt}.
+Third, sentiment analysis, however sophisticated its agentic
+implementations, is empirically a short-horizon, price-side signal
+and should be positioned accordingly
+\citep{bollen2011,Papasotiriou2024,xing2025had}.
+
+The proposed system, described in Chapter~3, draws on these lessons
+to build a fundamental-analysis-first agentic architecture, in which
+sentiment, if used at all, is a clearly delimited overlay rather than
+the central reasoning engine.

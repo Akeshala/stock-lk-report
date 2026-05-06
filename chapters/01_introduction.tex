@@ -1,77 +1,167 @@
 \chapter{Introduction}
+
 \section{Chapter overview}
-State the flow of this chapter using the TTT approach: context, problem definition, motivation, gap, contributions, challenges, research questions, aim, and objectives.
+\label{sec:overview}
+
+This chapter introduces the research presented in this dissertation, which proposes an Agentic Artificial Intelligence (AI) framework for the automated generation of fundamental analysis reports for publicly listed companies. The chapter follows a structured progression: it first situates the research within the broader domains of value investing and artificial intelligence in finance; it then defines the specific problem being addressed, articulates the motivation, identifies gaps in the existing literature, and outlines the contributions, challenges, research questions, aim, and objectives of the study. This chapter previews the key arguments developed in the rest of the dissertation, establishes the conceptual foundations on which subsequent chapters build, and ensures that the reader can locate every component of the research within a coherent narrative.
+
 
 \section{Problem background}
-\subsection{Context of the research domain}
+\label{sec:background}
 
-Analysing company shares has become an increasingly complex and expertise-driven task in modern financial markets. Effective evaluation requires investors to review numerous detailed documents such as annual reports, quarterly statements, regulatory announcements, and news articles, many of which contain highly technical information. Interpreting these materials demands a solid understanding of accounting and finance, skills that many individual investors lack. Even for those equipped with the necessary knowledge, analysing many interrelated parameters mentally remains a challenging and time-consuming process. 
+\subsection{Fundamental Analysis and Value Investing}
+\label{subsec:domain}
 
-Another major challenge arises from the contextual nature of financial markets. Analytical models developed for one country’s market often fail to produce accurate results when applied to another. Market behaviour is influenced by a range of country-specific factors, including economic conditions, availability of resources, governance structures, and political stability. Therefore, analytical models must be adapted to reflect the unique characteristics of each national market. 
+Fundamental analysis is the discipline of estimating the intrinsic value of a security by examining the underlying economic, financial, and qualitative attributes of the issuing entity, and it constitutes the foundational paradigm of value-based investing \citep{GrahamDodd2008}. The central premise of this paradigm is that the market price of a share will, over the long run, converge towards its intrinsic value, and that disciplined evaluation of a company's earnings power, asset base, capital structure, and management quality therefore offers a defensible basis for investment decisions \citep{Graham2006}. A sharp distinction is drawn between investment and speculation, with a genuine investment operation characterised as one grounded in thorough analysis that promises both the preservation of principal and an adequate return, thereby excluding activities driven primarily by short-term price movements \citep{Graham2006}. This investment--speculation dichotomy continues to shape contemporary research and practice in equity analysis and remains a useful normative benchmark against which automated decision-support tools may be evaluated \citep{Li2026FINSABER}.
 
-Given these complexities, most high-net-worth individuals and brokerage firms employ professional analysts to conduct market evaluations manually. In contrast, retail investors often lack the time, expertise, and resources to perform such detailed analysis. As a result, they become more susceptible to misinformation, market manipulation, and financial losses. 
+In modern practice, fundamental analysis typically integrates three complementary streams of evidence: quantitative analysis of audited financial statements, qualitative assessment of business strategy and competitive position, and contextual evaluation of macroeconomic and regulatory conditions \citep{Fatouros2025MarketSense,Papasotiriou2024}. Producing a thorough analytical report therefore requires the synthesis of large volumes of structured and unstructured information drawn from annual reports, quarterly filings, regulatory disclosures, earnings call transcripts, news media, and macroeconomic statistics \citep{Cernevicene2024}. The analytical workload involved is substantial, and equity research is consequently among the most expertise-intensive activities in modern capital markets \citep{Papasotiriou2024}.
 
-Retail investors frequently rely on research and recommendations provided by brokerage firms. However, over time, it has become evident that such research cannot always be considered objective or reliable. Brokerage firms often face inherent conflicts of interest, as their revenue tends to increase with higher trading volumes. Consequently, investors may be encouraged to trade more frequently, even when such activity is not in their best financial interest. 
+% ---- my work
 
-This imbalance in knowledge and analytical capacity contributes to market inefficiencies. Due to the limited financial literacy within the investor community, certain companies may trade at unrealistically high valuations, while others remain undervalued conditions that are detrimental to both market health and broader economic stability. 
 
-Furthermore, brokerage firms often issue target prices for companies, but forecasting such figures is inherently uncertain and difficult. Effective share market analysis should instead prioritize a deep understanding of the underlying business fundamentals rather than relying solely on externally set price targets. Before projecting future performance, it is essential to examine a company’s historical financial data and assess its current operational status. 
+% Analysing company shares has become an increasingly complex and expertise-driven task in modern financial markets. Effective evaluation requires investors to review numerous detailed documents such as annual reports, quarterly statements, regulatory announcements, and news articles, many of which contain highly technical information. Interpreting these materials demands a solid understanding of accounting and finance, skills that many individual investors lack. Even for those equipped with the necessary knowledge, analysing many interrelated parameters mentally remains a challenging and time-consuming process. 
 
-Although there has been substantial attention on technical analysis, the development and accessibility of robust fundamental analysis models remain limited. 
+% Another major challenge arises from the contextual nature of financial markets. Analytical models developed for one country’s market often fail to produce accurate results when applied to another. Market behaviour is influenced by a range of country-specific factors, including economic conditions, availability of resources, governance structures, and political stability. Therefore, analytical models must be adapted to reflect the unique characteristics of each national market. 
 
-\subsection{Subdomain and key technological context}
-Narrow the focus to the specific technical area that your project addresses.
+% Given these complexities, most high-net-worth individuals and brokerage firms employ professional analysts to conduct market evaluations manually. In contrast, retail investors often lack the time, expertise, and resources to perform such detailed analysis. As a result, they become more susceptible to misinformation, market manipulation, and financial losses. 
 
-\subsection{Practical and real-world context}
-Explain application context, adoption constraints, and current industry or regulatory relevance.
+% Retail investors frequently rely on research and recommendations provided by brokerage firms. However, over time, it has become evident that such research cannot always be considered objective or reliable. Brokerage firms often face inherent conflicts of interest, as their revenue tends to increase with higher trading volumes. Consequently, investors may be encouraged to trade more frequently, even when such activity is not in their best financial interest. 
+
+% This imbalance in knowledge and analytical capacity contributes to market inefficiencies. Due to the limited financial literacy within the investor community, certain companies may trade at unrealistically high valuations, while others remain undervalued conditions that are detrimental to both market health and broader economic stability. 
+
+% Furthermore, brokerage firms often issue target prices for companies, but forecasting such figures is inherently uncertain and difficult. Effective share market analysis should instead prioritize a deep understanding of the underlying business fundamentals rather than relying solely on externally set price targets. Before projecting future performance, it is essential to examine a company’s historical financial data and assess its current operational status. 
+
+% Although there has been substantial attention on technical analysis, the development and accessibility of robust fundamental analysis models remain limited. 
+
+% end of my work
+
+\subsection{Large Language Models and Agentic AI}
+\label{subsec:tech}
+
+Artificial intelligence has progressively reshaped financial decision making over the last three decades, beginning with neural network--based bankruptcy prediction in the 1990s and progressing to contemporary deep learning, reinforcement learning, and generative architectures used across forecasting, sentiment analysis, and portfolio construction \citep{Tripathi2025}. The vast majority of this work has, however, been directed at \emph{technical} questions of price and return prediction rather than at the \emph{fundamental} task of estimating intrinsic value \citep{Tripathi2025,Cernevicene2024}. Sentiment-driven approaches that map news headlines to short-horizon return signals, deep reinforcement learning agents that emit Buy / Sell / Hold actions, and statistical forecasters that predict next-day prices all share the same orientation: they target the price trajectory rather than the underlying business \citep{Li2026FINSABER}.
+
+The recent emergence of Large Language Models (LLMs) such as the GPT family has materially expanded the set of financial tasks that can be automated, because LLMs are able to ingest unstructured text, perform zero-shot and few-shot reasoning, and produce natural-language explanations alongside their predictions \citep{Xu2024IE,Papasotiriou2024}. Work by \citet{Papasotiriou2024} demonstrates that an instruction-tuned LLM, supplied with fundamentals, market data, and news summaries, can reproduce and in some configurations outperform Wall Street analysts on the equity stock-rating task. Information-extraction surveys further show that generative LLMs can convert plain text into structured entities, relations, and events at scale, enabling the systematic conversion of narrative disclosures into machine-readable evidence \citep{Xu2024IE}.
+
+A growing body of literature now investigates LLMs as fundamental analysts in their own right. \citet{Fatouros2025MarketSense} introduce MarketSenseAI~2.0, in which specialised LLM agents combine numerical fundamentals with SEC filings and earnings call transcripts to generate stock-level signals; the system reports an excess return of 8.0--18.9\% over benchmark indices on S\&P 100 and S\&P 500 universes. Multi-agent extensions of this idea have been proposed in industrial and academic contexts. \citet{Bangun2025} construct a CrewAI-orchestrated system in which intent, fundamental, technical, macroeconomic, and summarisation agents cooperate to answer retail investor queries on Indonesian equities, with the fundamental agent reaching 75\% directional accuracy. \citet{Cheng2025} report a comparable architecture in which fundamental, sentiment, technical, risk-management, and trading agents collectively deliver superior risk-adjusted returns relative to a buy-and-hold baseline. \citet{Smith2025GWise} extend this paradigm by modelling agent collaboration as a directed acyclic graph, providing path-level attribution and explainability over the reasoning chain.
+
+Two methodological innovations underpin most of these systems. First, retrieval-augmented generation grounds LLM outputs in retrieved evidence drawn from filings, transcripts, and macroeconomic reports, mitigating hallucination and enabling date-aware reasoning \citep{Fatouros2025MarketSense,Smith2025GWise}. Second, chain-of-thought prompting elicits explicit step-wise reasoning that improves performance on multi-step financial tasks such as ratio analysis and earnings forecasting \citep{Papasotiriou2024}. \citet{Acharya2025AgenticAI} synthesise these advances under the broader concept of \emph{Agentic AI}, defined as the class of autonomous systems capable of pursuing complex, long-horizon goals with minimal human supervision through goal-oriented architectures, adaptive control, and tool use. Their survey identifies finance as one of the highest-impact application domains for agentic systems, while emphasising that scalability, governance, and explainability remain open challenges.
+
+
+
+\subsection{Practical and Real-World Context}
+\label{sec:practical}
+
+Equity markets are economically consequential, and the costs of poor analysis are borne disproportionately by those least equipped to absorb them. Retail investors, who increasingly participate directly in capital markets, typically lack the time, training, and data access required to perform rigorous fundamental analysis, and they consequently depend on intermediaries whose incentives are not always aligned with their own \citep{Mukherjee2025AgenticReview}. Empirical work in finance has long documented behavioural biases among individual investors, including over-trading, under-diversification, and stronger disposition effects relative to institutional participants \citep{Li2025FSA}. Sell-side research, the most common alternative, is itself imperfect: brokerage revenues are generally tied to trading activity, target prices are subject to substantial forecast error, and recommendation revisions have been shown to move prices materially even when their long-run accuracy is modest \citep{Papasotiriou2024}.
+
+In parallel, the regulatory and governance environment surrounding AI in finance is tightening. Frameworks such as the EU AI Act, MiFID II disclosure requirements, and emerging guidance on AI use in capital markets emphasise transparency, auditability, and the explainability of automated decisions \citep{Mukherjee2025AgenticReview,Cernevicene2024}. The systematic literature review by \citet{Cernevicene2024} identifies credit management, stock price prediction, and fraud detection as the three most-studied financial applications of explainable AI, and shows that black-box models such as artificial neural networks, gradient boosting, and random forests dominate the field; portfolio construction and investment-decision support remain comparatively under-served by interpretable methods. Industry analyses converge on the same point: agentic financial systems must balance autonomy and adaptiveness with the traceability that institutions and regulators require, particularly when their outputs influence the allocation of household savings \citep{Acharya2025AgenticAI,Mukherjee2025AgenticReview}.
+
+The picture in emerging and frontier markets sharpens these concerns. In Sri Lanka, as in many comparable economies, retail participation in the Colombo Stock Exchange coexists with limited financial literacy, restricted access to professional research, and market microstructures whose dynamics differ materially from those of the United States or Europe \citep{Bangun2025}. Models trained or validated solely on developed-market data may not transfer cleanly: macroeconomic regimes, disclosure practices, and the composition of the listed universe all vary across jurisdictions, and several recent benchmarking studies show that LLM-based investing strategies deteriorate sharply once the evaluation universe and time horizon are broadened beyond the curated subsets on which they were originally validated \citep{Li2026FINSABER}. A practically relevant fundamental analysis system must therefore be designed not only to be technically competent but also to be context-aware, transparent, and accessible to non-specialist users.
+
 
 \section{Problem definition}
+\label{sec:problem}
+
+Fundamental analysis is widely practised by professional analysts, yet it remains comparatively under-researched in the AI literature, where attention has overwhelmingly been directed at short-horizon price prediction \citep{Tripathi2025,Li2026FINSABER}. The activity is data-intensive and synthesis-intensive: a competent analyst must reconcile audited financial statements, regulatory filings, earnings call transcripts, news flow, peer-comparison data, and macroeconomic indicators into a coherent narrative about a company's intrinsic value \citep{Cernevicene2024,Fatouros2025MarketSense}. Existing AI systems address fragments of this workflow such as ratio computation, sentiment scoring, document retrieval, single-task question answering. But rarely produce an end-to-end, structured, and auditable fundamental report \citep{Papasotiriou2024,Bangun2025}. Furthermore, when LLM-based recommendations are issued, they are typically presented as point-estimate Buy/Sell/Hold labels with limited grounding in underlying evidence, which exposes users to hallucinated content, opaque reasoning, and a substantive risk of being unable to verify the basis of the advice \citep{Cernevicene2024,Acharya2025AgenticAI}.
+
+The technical and methodological aspects of the problem can be summarised as follows. The required inputs are heterogeneous (tabular fundamentals, free-text disclosures, time-series macro data) and time-stamped, demanding date-aware retrieval and careful separation of numerical extraction from natural-language synthesis \citep{Fatouros2025MarketSense,Xu2024IE}. The required output is a structured analytical report, not a single trading signal, which implies coverage constraints (every dimension a competent analyst would assess) and traceability constraints (every claim must be attributable to a specific source). Finally, the system must operate on a market context. In this case, it is Sri Lanka whose data-availability profile differs from that of the major developed markets in which most existing systems have been built and evaluated \citep{Bangun2025}. The scope of this dissertation is restricted to publicly listed companies and to the production of fundamental analysis reports; it does not attempt to forecast short-term prices, generate trade signals, or provide personalised investment advice.
+
 
 \subsection{Problem statement}
-Fundamental analysis is widely used in practice but remains relatively under-researched, primarily due to its reliance on large volumes of unstructured data from diverse sources. This makes it difficult for human analysts to systematically process and interpret information, highlighting the need for an Agentic AI-based approach to enable more efficient and consistent analysis. 
+
+There is currently no transparent, auditable, and context-aware Agentic AI framework that converts the heterogeneous information ecosystem of a publicly listed company namely financial statements, regulatory filings, earnings disclosures, and macroeconomic indicators into a structured, evidence-grounded fundamental analysis report accessible to non-specialist investors.
 
 \section{Research motivation}
+\label{sec:motivation}
 
-The analysis of equity investments in the Sri Lankan capital market remains a complex and often inaccessible task for many investors, particularly those with limited financial domain knowledge. At present, investors primarily rely on general-purpose large language model (LLM) tools and research reports provided by broker firms. While these resources offer some level of guidance, they are not specifically tailored to the nuances of stock market analysis, resulting in inefficiencies and a steep learning curve for users. 
+The motivation for this research is technical, societal, and contextual. 
 
-Consequently, a significant number of investors are prone to misinterpretation of information and suboptimal decision-making, leading to potential financial losses. This challenge is especially pronounced among retail investors, who may lack the expertise required to critically evaluate financial data and insights. Moreover, these limitations can negatively impact overall confidence and trust in the Sri Lankan capital market. 
 
-Therefore, there is a clear need for a more specialized, accessible, and intelligent solution that can support investors in making informed decisions, while also enhancing transparency and trustworthiness within the market ecosystem. 
+From a technical standpoint, the dominant orientation of the AI-in-finance literature towards short-horizon price prediction sits uneasily with the classical investment--speculation distinction \citep{Graham2006,GrahamDodd2008}. Recent benchmarking work shows that LLM-based timing strategies, while attractive in published case studies, fail to generate statistically significant alpha once survivorship, look-ahead, and data-snooping biases are controlled for \citep{Li2026FINSABER}. Reorienting AI tooling towards fundamental analysis where the information advantage of careful, exhaustive synthesis is plausibly larger and the evaluation horizon is longer offers a more defensible target for automation \citep{Fatouros2025MarketSense}.
+
+From a societal standpoint, equity markets play an established role in capital formation and household wealth accumulation, and the asymmetry between institutional and retail investors directly affects market efficiency and economic stability \citep{Li2025FSA,Mukherjee2025AgenticReview}. Retail investors who lack access to professional analysis are demonstrably more exposed to misinformation and manipulation, and the resulting valuation distortions impose costs on the broader economy \citep{Li2025FSA}. Tools that systematically widen access to high-quality fundamental analysis are therefore aligned with broader objectives of financial inclusion \citep{Bangun2025}.
+
+From a contextual standpoint, the Sri Lankan capital market, like many emerging markets, is characterised by limited availability of independent equity research, a heterogeneous retail investor base, and analytical models that cannot be transplanted unmodified from US or European practice \citep{Bangun2025,Li2026FINSABER}. Investors currently rely either on broker-issued reports, whose objectivity is constrained by commission structures, or on general-purpose LLM tools, which are not specialised to the syntax and conventions of local financial disclosures \citep{Papasotiriou2024,Cheng2025}. There is therefore a clear, locally salient need for a specialised, accessible, and auditable analytical pipeline.
+
+% research gap ----------------------
 
 \section{Research gap}
-\textbf{Gap 1:} Add citation-backed explanation.
+Although fundamental analysis is widely applied in real-world investment decision making, several gaps emerge from a careful reading of the recent literature.
 
-\textbf{Gap 2:} Add citation-backed explanation.
+\paragraph{\textbf{Limited end-to-end automation of fundamental analysis.}} Existing LLM-based financial systems concentrate on specific subtasks like sentiment scoring, ratio computation, question answering, or signal generation rather than on the production of complete, structured fundamental analysis reports \citep{Papasotiriou2024,Cheng2025,Smith2025GWise}. Surveys of the field consistently note that comprehensive, domain-specific solutions optimised for end-to-end financial analytics remain scarce \citep{Fatouros2025MarketSense,Cernevicene2024}.
+
+\paragraph{\textbf{Scarce reliable extraction of structured data from heterogeneous unstructured sources.}} Fundamental analysis depends on synthesising tabular financials, narrative disclosures, transcripts, and macroeconomic data, but the literature on generative information extraction shows that tasks such as cross-document numerical extraction, schema-constrained generation, and multi-source reconciliation remain technically challenging in finance-specific settings \citep{Xu2024IE,Provakar2024QA}. Existing finance-tuned RAG pipelines provide partial answers but are typically validated on narrow corpora \citep{Fatouros2025MarketSense}.
+
+\paragraph{\textbf{Recommendations issued without grounded explanation.}} Many systems output Buy/Sell/Hold labels without exposing the evidence on which the recommendation rests, and the explainable-AI literature shows that opaque recommendations erode user trust and complicate regulatory compliance \citep{Cernevicene2024,Acharya2025AgenticAI}. The growing emphasis on auditability under emerging AI regulation makes the absence of evidence-grounded reasoning a particularly acute gap \citep{Mukherjee2025AgenticReview}.
+
+\paragraph{\textbf{Insufficient attention to market context and external generalisability.}} Models developed and evaluated on US equities frequently fail to generalise to other markets when constraints, disclosure conventions, and macroeconomic regimes differ \citep{Bangun2025,Li2026FINSABER}. The Sri Lankan market, and emerging markets more broadly, are largely absent from the existing AI-in-equity-analysis literature.
+
+\paragraph{\textbf{Outputs not designed for non-specialist users.}} Most existing systems target institutional users or sophisticated traders; comparatively little work focuses on rendering fundamental analysis interpretable and accessible to retail investors with limited financial expertise \citep{Bangun2025,Mukherjee2025AgenticReview}.
+
+\paragraph{\textbf{Conflation of investment and speculation in evaluation.}} Recent rigorous benchmarking shows that previously reported gains from LLM-based timing strategies often vanish under bias-controlled, longer-horizon evaluation \citep{Li2026FINSABER}, reinforcing the classical insight that short-term price prediction is a poor benchmark for whether an automated system supports genuine \emph{investment} \citep{Graham2006,GrahamDodd2008}. Few existing AI systems explicitly position themselves on the fundamental-analysis side of this distinction.
+
+
+% -----------------------------
+
 
 \section{Contribution to the body of knowledge}
-\subsection{Contribution to the research domain}
-Explain methodological or theoretical contribution.
+\subsection{Contribution to the Research Domain}
+\label{sec:contrib-domain}
 
-\subsection{Contribution to the problem domain}
-Explain practical or applied contribution.
+The dissertation contributes to the AI-in-finance research domain in three ways. First, it proposes an Agentic AI architecture in which specialised LLM-based agents are responsible for distinct, template-bounded sections of a fundamental analysis report with financial statement analysis, regulatory filing summarisation, macroeconomic contextualisation, and integrated valuation commentary thereby extending the line of work begun by \citet{Fatouros2025MarketSense} and \citet{Cheng2025} from price-level signal generation to structured report generation. Second, it formalises a separation between numerical extraction and natural-language synthesis, in which retrieval-augmented numerical agents populate auditable fields and language-model agents articulate them in prose, addressing the hallucination concern documented across recent finance-LLM studies \citep{Xu2024IE,Cernevicene2024}. Third, it operationalises template-based output as a concrete mechanism for enforcing both coverage and auditability, an approach motivated by but extending the related-work tradition surveyed by \citet{Acharya2025AgenticAI} and \citet{Smith2025GWise}.
+
+\subsection{Contribution to the Problem Domain}
+\label{sec:contrib-problem}
+
+The dissertation contributes to the practical problem domain of equity research support. It produces a transparent, reproducible pipeline that makes structured fundamental analysis accessible to retail investors while preserving the traceability institutional users require. By focusing on the intrinsic situation of the company rather than on its price trajectory, the system places itself unambiguously on the investment side of the classical distinction articulated by \citet{Graham2006} and \citet{GrahamDodd2008}, addressing a normative gap in current AI-in-finance practice. The framework is designed and validated with reference to the Sri Lankan capital market, contributing one of the first systematic agentic-AI artefacts targeted at fundamental analysis in an emerging-market context \citep{Bangun2025}.
+
 
 \section{Research challenges}
-\textbf{Challenge 1:} Describe challenge and justification.
+\label{sec:challenges}
 
-\textbf{Challenge 2:} Describe challenge and justification.
+\paragraph{\textbf{Heterogeneous and unstructured source data.}} Financial disclosures span tabular statements, narrative MD\&A, footnotes, transcript dialogue, and macroeconomic series, each with distinct schemas and quality characteristics. Reliable extraction across these modalities is a non-trivial generative information-extraction problem \citep{Xu2024IE,Provakar2024QA}.
+
+\paragraph{\textbf{Hallucination and factual grounding in LLM outputs.}} LLM-generated narratives are vulnerable to fabrication of numerical facts and source attributions, with material consequences in a financial context \citep{Cernevicene2024,Fatouros2025MarketSense}. Mitigation requires architectural separation of retrieval and synthesis, conservative prompting, and verification mechanisms \citep{Fatouros2025MarketSense,Papasotiriou2024}.
+
+\paragraph{\textbf{Coordination among specialised agents.}} Multi-agent orchestration introduces communication overhead, output-schema reconciliation, and failure-mode interactions that single-agent systems do not encounter \citep{Cheng2025,Smith2025GWise}.
+
+\paragraph{\textbf{Context-dependence and generalisability.}} Models calibrated to US large-cap equities transfer imperfectly to Sri Lankan listings; recent bias-controlled benchmarks show that LLM-based investing strategies are highly sensitive to evaluation universe and horizon \citep{Li2026FINSABER,Bangun2025}.
+
+\paragraph{\textbf{Auditability and explainability.}} Producing recommendations that are both useful and traceable to underlying evidence remains an open problem in financial XAI \citep{Cernevicene2024,Acharya2025AgenticAI,Mukherjee2025AgenticReview}.
+
+\paragraph{\textbf{Evaluation in the absence of an objective ground truth.}} Unlike short-horizon price prediction, fundamental analysis does not admit a single numerical target; evaluation must combine factual-extraction accuracy, coverage, expert-rated qualitative quality, and downstream usefulness \citep{Papasotiriou2024,Provakar2024QA}.
+
+
+
 
 \section{Research questions}
-\resq{1}{What key parameters can be extracted using AI to improve the efficiency and effectiveness of fundamental analysis?}
-\resq{2}{What is the influential impact (in detail and color context) of a multi-scale feature
-extraction mechanism on enhancing low-light images in non-uniform lighting conditions?}
-\resq{3}{In what ways can the GAN-based networks be directed to produce robust and generalized
-enhancements across a diverse non-uniformity range of low-light scenes?}
+\label{sec:rq}
+
+\begin{enumerate}[label=\textbf{RQ\arabic*:}, leftmargin=3.2em]
+    \item What set of parameters and report sections constitutes a comprehensive template for AI-generated fundamental analysis of a publicly listed company?
+    \item How can an LLM-based agent accurately and auditably extract quantitative financial parameters from primary financial reports?
+    \item How can an LLM-based agent reliably extract and interpret qualitative information from regulatory filings, news articles, and macroeconomic indicators?
+    \item To what extent can an Agentic AI system produce reliable approximations of company valuation across multiple recognised valuation methodologies, while clearly disclosing the documentary basis of every value reported?
+\end{enumerate}
+
 
 \section{Research aim}
-State the aim in one sentence using design-develop-evaluate language, then elaborate briefly.
+
+The aim of this research is to design, develop, and evaluate an Agentic AI framework that automatically produces structured, evidence-grounded fundamental analysis reports for publicly listed companies, with primary application to the Sri Lankan capital market. The framework decomposes the analytical workflow into specialised, retrieval-augmented agents responsible for distinct sections of a standardised report template, separates numerical extraction from natural-language synthesis to mitigate hallucination, and exposes the documentary provenance of every reported value to support auditability.
 
 \section{Research objectives}
-\begin{itemize}
-    \item RO1: Insert SMART objective 1.
-    \item RO2: Insert SMART objective 2.
-    \item RO3: Insert SMART objective 3.
-    \item RO4: Insert SMART objective 4.
-\end{itemize}
+\begin{enumerate}[label=\textbf{RO\arabic*:}, leftmargin=3.2em]
+    \item To conduct a comprehensive review of the AI-in-equity-analysis literature in order to identify the key challenges, recurring components, and unresolved problems in fundamental analysis automation.
+    \item To design a comprehensive report template that captures the fundamental, qualitative, and macroeconomic aspects of a publicly listed company.
+    \item To develop AI agents that extract and structure quantitative financial information from historical financial statements and regulatory filings.
+    \item To compute the standard set of financial ratios and derived metrics from the extracted data.
+    \item To develop AI agents that retrieve and interpret qualitative company and industry level information from regulatory disclosures, news media, and macroeconomic sources.
+    \item To generate company valuations using multiple recognised valuation methodologies and to compose the integrated valuation commentary.
+    \item To produce a structured analytical report in accordance with the proposed template, in which every reported value, claim, and qualitative judgement is accompanied by an explicit reference to its supporting source.
+    \item To evaluate the framework against expert-curated ground truth and case-study companies in the Sri Lankan capital market.
+\end{enumerate}
 
 \section{Chapter summary}
-Summarize key points and transition to Chapter 2.
+\label{sec:summary}
+
+This chapter has situated the dissertation within the intersection of value-based investing and artificial intelligence in finance, drawing on the classical investment--speculation distinction \citep{Graham2006,GrahamDodd2008} and the contemporary AI-in-finance literature \citep{Cernevicene2024,Acharya2025AgenticAI,Fatouros2025MarketSense}. It has defined the problem as the absence of a transparent, auditable, and context-aware Agentic AI framework for end-to-end fundamental analysis report generation, motivated by both the limited external validity of price-prediction systems \citep{Li2026FINSABER} and the under-served information needs of retail investors in emerging markets \citep{Bangun2025}. It has identified concrete gaps in the existing literature, set out the contributions to the research and problem domains, enumerated the principal challenges, and stated the research questions, aim, and objectives. The next chapter undertakes a detailed literature review that examines each of these strands in greater depth and prepares the conceptual ground for the framework developed in subsequent chapters.
+
