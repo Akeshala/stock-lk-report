@@ -162,13 +162,11 @@
 \newlength\tindent
 \newenvironment{abstractstyle}[1]{%
     \cleardoublepage
-    \markboth{#1}{}%
     \setlength{\tindent}{\parindent}%
     \setlength{\parindent}{0pt}%
-    \noindent{\LARGE\textbf{#1}}\par
-    \vspace{1cm}%
+    \chapter*{#1}%
+    \markboth{#1}{}%
     }{%
-    \vspace{1cm}%
     \setlength{\parindent}{\tindent}%
 }
 
@@ -264,12 +262,7 @@
 % document (see thesis.tex) so front matter follows the required order.
 
 \newcommand*{\thesisprintdeclaration}{%
-    \cleardoublepage
-    \markboth{\cons@hmain}{}%
-    \setlength{\tindent}{\parindent}%
-    \setlength{\parindent}{0pt}%
-    \noindent{\LARGE\textbf{\cons@hmain}}\par
-    \vspace{1cm}%
+    \begin{abstractstyle}{\cons@hmain}
     \noindent\cons@self\par
     \vspace{8mm}%
     \noindent\textbf{\cons@studentnamelbl}\space--\space\@author\par
@@ -291,7 +284,7 @@
         \textbf{\cons@datecaption}\space\decl@signeddate
     \end{minipage}\par
     \vspace{1cm}%
-    \setlength{\parindent}{\tindent}%
+    \end{abstractstyle}%
 }
 
 \newcommand*{\thesisprintacknowledgments}{%
