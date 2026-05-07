@@ -4,8 +4,8 @@
 This chapter situates the proposed research within two long-standing
 traditions of stock analysis. It begins by revisiting the conceptual
 distinction between \emph{fundamental analysis} and \emph{technical
-analysis}, drawing on \citeauthor{graham2003}'s foundational separation
-of investment from speculation \citep{graham2003}, before mapping how
+analysis}, drawing on \citeauthor{Graham2006}'s foundational separation
+of investment from speculation \citep{Graham2006}, before mapping how
 recent advances in agentic artificial intelligence (AI) have begun to
 reshape both. The review is structured thematically rather than
 paper-by-paper: it first establishes the problem domain and the gap
@@ -34,7 +34,7 @@ practice and a synthesis.
 
 Modern stock analysis still rests on the dichotomy that
 Benjamin Graham drew more than seventy years ago. In
-\emph{The Intelligent Investor}, \citet{graham2003} argues that an
+\emph{The Intelligent Investor}, \citet{Graham2006} argues that an
 investment operation is one which, on thorough analysis, promises
 safety of principal and an adequate return, while operations not
 meeting these requirements are speculative. Fundamental analysis,
@@ -43,11 +43,11 @@ its earnings power, balance-sheet strength, competitive position
 and future profitability and is deliberately price-agnostic;
 the share price enters the picture only at the end, when the analyst
 compares intrinsic value to the quoted price to decide whether a
-margin of safety exists \citep{graham2003}. Technical analysis takes
+margin of safety exists \citep{Graham2006}. Technical analysis takes
 the opposite stance: it treats the price series itself as the primary
 object of study and tries to forecast future prices from past prices,
 volumes and, increasingly, the mood of market participants
-\citep{murphy1999}. \citet{graham2003} is unambiguous that activities
+\citep{murphy1999}. \citet{Graham2006} is unambiguous that activities
 of this second kind, however sophisticated, fall on the speculative
 side of the line.
 
@@ -70,7 +70,7 @@ The raw inputs like annual reports, 10-K and 10-Q filings,
 earnings-call transcripts, management commentary, industry studies
 and macroeconomic releases are heterogeneous, long, frequently
 qualitative, and arrive at different cadences
-\citep{fatouros2025}. Equity-research practice typically combines
+\citep{Fatouros2025MarketSense}. Equity-research practice typically combines
 a study of the business model, the financial statements and recent
 conference calls into a single judgement \citep{dongare2024}, an
 integration that is hard to encode in conventional rule-based or
@@ -84,7 +84,7 @@ short-horizon price moves.
 Even for large language models (LLMs), three obstacles recur. First,
 context-window limits prevent the direct ingestion of long filings
 such as 10-Ks or detailed macroeconomic reports
-\citep{fatouros2025}. Second, LLMs are known to hallucinate
+\citep{Fatouros2025MarketSense}. Second, LLMs are known to hallucinate
 numerical values and to handle tables inconsistently, which is a
 serious problem in financial fundamentals where precision matters
 \citep{saravanan2026}. Third, monolithic LLMs conflate causation
@@ -149,7 +149,7 @@ company fundamentals, with news and sentiment offering only marginal
 short-term gains \citep{Papasotiriou2024}. This empirical result is
 consistent with Graham's claim that fundamentals carry the
 long-horizon signal, while sentiment is a short-horizon overlay
-\citep{graham2003}.
+\citep{Graham2006}.
 
 Backbone choice nevertheless matters. \citet{yu2025finmem} compare
 GPT-3.5, GPT-4, GPT-4-Turbo and Llama-2 inside the same agent
@@ -197,7 +197,7 @@ Two technical mechanisms recur in agentic finance systems:
 retrieval-augmented generation and explicit memory. RAG provides a
 way to ground LLM reasoning in documents that exceed the model's
 context window; \citet{han2024} encapsulate retrieval as a tool
-function that agents call autonomously, while \citet{fatouros2025}
+function that agents call autonomously, while \citet{Fatouros2025MarketSense}
 extend basic RAG with semantic chunking and Hypothetical Dense
 Embeddings (HyDE) to extract macroeconomic context from institutional
 reports, reporting precision of 1.00 and recall of 0.91 at top-7
@@ -224,11 +224,11 @@ the most ambitious example: a five-agent system (News, Fundamentals,
 Dynamics, Macroeconomic, Signal) in which the Fundamentals agent
 itself orchestrates a three-layer chain over SEC filings,
 earnings-call transcripts and quarterly numerical data
-\citep{fatouros2025}. On the S\&P 100 over 2023--2024 this design
+\citep{Fatouros2025MarketSense}. On the S\&P 100 over 2023--2024 this design
 produces a cumulative return of 125.9~per~cent against the index
 return of 73.5~per~cent, with a 16~per~cent higher Sortino ratio and
 an explicit alpha of 8.0--18.9~per~cent on the broader S\&P 500
-\citep{fatouros2025}. The result is notable not because of the
+\citep{Fatouros2025MarketSense}. The result is notable not because of the
 headline return backtests of this length are easily flattered by
 survivorship bias but because the authors decompose returns
 using Carhart and Fama-French factor models and still find
@@ -296,7 +296,7 @@ settings, sentiment is rarely a stand-alone module: it is one
 specialised agent among several. The News Agent in MarketSenseAI~2.0,
 for instance, condenses daily news into a progressive narrative that
 the downstream Signal Agent uses for short-term momentum
-\citep{fatouros2025}, and the Sentiment Analyst in the
+\citep{Fatouros2025MarketSense}, and the Sentiment Analyst in the
 \citet{Cheng2025} framework generates tone scores that are fused with
 fundamental and technical signals before a trading decision is taken.
 Critically, when \citet{Papasotiriou2024} test sentiment in
@@ -430,7 +430,7 @@ distinction between investment grounded in fundamentals and
 speculation grounded in price prediction remains analytically useful
 and is, if anything, sharpened by the new tools: agentic systems
 make it visible whether a design is asking what a business is worth
-or where its price will go next \citep{graham2003}. Second, the
+or where its price will go next \citep{Graham2006}. Second, the
 literature on agentic fundamental analysis like MarketSenseAI~2.0,
 MAC, FinQAPT, and the agent-collaboration studies of Han \citep{han2024}
 converges on a small set of design moves: specialise agents by data
@@ -438,7 +438,7 @@ source; ground generation in retrieval and, where possible, in
 deterministic statistical methods; use memory and chain-of-thought
 to handle the multi-timeliness of financial data; and reserve
 generative behaviour for explanation rather than for numerical
-computation \citep{fatouros2025,han2024,saravanan2026,singh2024finqapt}.
+computation \citep{Fatouros2025MarketSense,han2024,saravanan2026,singh2024finqapt}.
 Third, sentiment analysis, however sophisticated its agentic
 implementations, is empirically a short-horizon, price-side signal
 and should be positioned accordingly

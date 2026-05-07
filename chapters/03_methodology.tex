@@ -1,15 +1,64 @@
 \chapter{Methodology}
-% \section{Chapter overview}
-% Outline the methodological structure and rationale.
+\section{Chapter overview}
+Outline the methodological structure and rationale.
 
 \section{Research methodology}
 
-% The following table provides an overview of the selected scientific methodology based on the
-% conventional Research ‘Onion’ Model, presented by (Saunders et al., 2019).
+The following table provides an overview of the selected scientific methodology based on the
+conventional Research ‘Onion’ Model, presented by \citep{saunders2019research}.
 
-% Table
-
-This study adopts pragmatism as its research philosophy, as it is primarily focused on addressing a real-world problem, enhancing fundamental analysis through an Agentic AI-based approach, rather than adhering to a single philosophical paradigm. Pragmatism enables the integration of both quantitative methods and qualitative insights, allowing the research to effectively handle diverse data types. 
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|p{4.8cm}|p{10cm}|}
+        \hline
+        Research philosophy & 
+        This study adopts pragmatism as its research philosophy, as it 
+        is primarily focused on addressing a real-world problem, enhancing 
+        fundamental analysis through an Agentic AI-based approach, rather 
+        than adhering to a single philosophical paradigm. Pragmatism enables 
+        the integration of both quantitative methods and qualitative insights, 
+        allowing the research to effectively handle diverse data types. \\
+        \hline
+        Research approach & 
+        An abductive research approach is employed, beginning with the 
+        observation of limitations in conventional stock fundamental analysis 
+        tools, and iteratively developing theoretical and practical insights 
+        through the design and evaluation of an Agentic AI system. This 
+        approach allows the research to move flexibly between data-driven 
+        findings and theoretical reasoning throughout the development process. \\
+        \hline
+        Research methodological choice & 
+        A mixed-methods design is adopted, combining quantitative analysis 
+        of financial metrics with qualitative insights derived from news articles, management 
+        commentary, and market narratives. This dual approach enables a 
+        comprehensive evaluation of stock fundamentals that neither method 
+        could achieve in isolation.  \\
+        \hline
+        Research strategy & 
+        The research follows a design science strategy, centred on the 
+        development and evaluation of an artefact, an Agentic AI-powered 
+        fundamental analysis tool. The system is designed to autonomously 
+        retrieve, process, and synthesise data, producing actionable investment insights. 
+        Iterative prototyping and performance evaluation against financial reports, broker research reports and interviews with domain experts form the core of the research strategy. \\
+        \hline
+        Research time horizon & 
+        A cross-sectional time horizon is adopted, with the tool evaluated 
+        against a defined snapshot of stock market data within a specific 
+        period. This allows for the systematic assessment of the tool's 
+        analytical capabilities without requiring longitudinal tracking, 
+        though future work may extend to longitudinal evaluation. \\
+        \hline
+        Research data collection and analysis & 
+        Data is collected from multiple sources, including financial statements in CSE, news articles, analyst reports is analysed using natural language processing techniques 
+        embedded within the Agentic AI pipeline. The tool's outputs are 
+        evaluated based on accuracy, completeness, and relevance of the 
+        generated fundamental analysis. \\
+        \hline
+    \end{tabular}
+    \caption{Research Methodology}
+    \label{tab:research-methodology}
+\end{table}
 
 \section{Development methodology}
 
@@ -25,54 +74,136 @@ This study focuses on fundamentally analysing publicly listed companies in the C
 
 \subsection{Schedule}
 
+\subsubsection{Gantt chart}
+
+The schedule of the project is presented in the form of a Gantt chart, in APPENDIX C.3.
+
+\subsubsection{Deliverables and dates}
+
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|}
         \hline
-        Milestone & Target date \\
+        Deliverable & Target date \\
         \hline
-        Project Proposal Presentation  & May 7th, 2026  \\
-        Project Proposal and Interim Demonstration  & May 14th, 2026  \\
-        Implementation complete & June 30th, 2026  \\
-        Submission  & July 30th, 2026 \\
+        Draft literature review  & Feb 28th, 2026  \\
+        \hline
+        Draft project proposal submission  & March 14th, 2026  \\
+        \hline
+        Project proposal presentation  & May 7th, 2026  \\
+        \hline
+        Project proposal and interim demonstration  & May 14th, 2026  \\
+        \hline
+        Software implementation completion & June 30th, 2026  \\
+        \hline
+        Thesis submission  & July 30th, 2026 \\
         \hline
     \end{tabular}
-    \caption{Project schedule summary}
+    \caption{Deliverables and dates}
     \label{tab:project-schedule}
 \end{table}
 
-% \subsection{Deliverables and dates}
-% List key deliverables and deadlines.
+\subsection{Resources}
 
-% \subsection{Resources}
-% \subsubsection{Hardware resources}
-% List compute and infrastructure resources.
+\subsubsection{Software resources}
 
-% \subsubsection{Software resources}
-% List tools, frameworks, and libraries.
 
-% \subsubsection{New technical skills}
-% List technical skills acquired during the project.
+\begin{itemize}
+    \item \textbf{Agentic AI Framework} (LangChain / LangGraph) --- used 
+    for orchestrating multi-step AI agent pipelines for autonomous 
+    retrieval, reasoning, and synthesis of financial data.
 
-% \subsection{Data requirements}
-% Specify datasets, licensing, and preprocessing requirements.
+    \item \textbf{Large Language Model} (OpenAI GPT-5.5 / Claude 4.6 Sonnet / AWS Textract) 
+    --- used for extracting qualitative insights, summarising financial 
+    narratives, and interpreting unstructured financial text.
 
-% \subsection{Risks and mitigation}
-% Document major project risks with likelihood, impact, and mitigation strategy.
+    \item \textbf{Vector Database} (ChromaDB / Pinecone) --- used for 
+    storing and retrieving embedded financial documents for 
+    Retrieval-Augmented Generation (RAG) within the agent pipeline.
 
-% \begin{table}[H]
-%     \centering
-%     \begin{tabular}{|l|l|l|l|}
-%         \hline
-%         Risk & Likelihood & Impact & Mitigation \\
-%         \hline
-%         Data quality risk & Medium & High & Validation and cleaning pipeline \\
-%         Timeline overrun & Medium & Medium & Weekly milestone tracking \\
-%         \hline
-%     \end{tabular}
-%     \caption{Risk and mitigation table (placeholder)}
-%     \label{tab:risk-mitigation}
-% \end{table}
+    \item \textbf{Backend Development} (Python, FastAPI) --- used for 
+    building the core application logic, API endpoints, and agent 
+    orchestration layer.
+
+    \item \textbf{NLP and Embeddings} (HuggingFace Transformers, OpenAI 
+    Embeddings) --- used for generating text embeddings for semantic 
+    search and qualitative document retrieval.
+
+    \item \textbf{Frontend / Interface} (React) --- used for 
+    developing the user interface for interacting with the 
+    fundamental analysis tool.
+
+    \item \textbf{Version Control} (Git, GitHub) --- used for source code 
+    management and project versioning.
+
+    \item \textbf{Development Environment} (Cursor, Claude Code, Jupyter Notebook) --- 
+    used for code development, prototyping, and iterative testing 
+    of AI pipelines.
+\end{itemize}
+
+\subsubsection{New technical skills}
+
+\begin{itemize}
+    \item \textbf{Agentic AI Development} --- designing and implementing 
+    multi-agent AI systems capable of autonomously planning, retrieving 
+    information, reasoning over financial data, and generating structured 
+    outputs using LangChain and LangGraph.
+
+    \item \textbf{Retrieval-Augmented Generation (RAG)} --- building RAG 
+    pipelines that combine vector-based document retrieval with large 
+    language model generation, enabling the agent to ground its qualitative and quantitative
+    insights in financial documents.
+
+    \item \textbf{Prompt Engineering} --- designing and optimising prompts 
+    for large language models to produce accurate, structured, and 
+    contextually relevant fundamental analysis outputs across 
+    diverse stock profiles.
+
+    \item \textbf{NLP for Financial Text} --- applying natural language 
+    processing techniques (to financial reports, news articles, and 
+    industry level reports), entity recognition, 
+    and summarisation.
+
+    \item \textbf{Qualitative Research Methods} --- designing and conducting 
+    semi-structured interviews with domain experts to evaluate 
+    AI-generated qualitative outputs, and thematically analysing 
+    interview responses.
+\end{itemize}
+
+\subsection{Data requirements}
+
+\begin{itemize}
+    \item \textbf{Financial data} (CSE reports / regulatory reports) --- used for retrieving 
+    historical financial statements, stock prices, and key financial ratios.
+
+    \item \textbf{Qualitative data} (Reputed news sites, management interviews, macroeconomic reports, industry reviews) 
+    --- used for collecting qualitative aspects of the company, its position in the market and future sector forecasts.
+
+    \item \textbf{{Price}} (CSE web) --- used for retrieving 
+    current market price.
+
+    \item \textbf{{Research reports}} (Registered Stock Broker reports) --- used for validating computed quantitative values.
+\end{itemize}
+
+\subsection{Risks and mitigation}
+Document major project risks with likelihood, impact, and mitigation strategy.
+
+S: Severity, F: Frequency.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        Risk & S & F & Mitigation Plan \\
+        \hline
+        Data quality risk & Medium & High & Validation and cleaning pipeline \\
+        \hline
+        Timeline overrun & Medium & Medium & Weekly milestone tracking \\
+        \hline
+    \end{tabular}
+    \caption{Risk and mitigation}
+    \label{tab:risk-mitigation}
+\end{table}
 
 % \section{Chapter summary}
 % Summarize methodological choices and transition to LESP and implementation.
