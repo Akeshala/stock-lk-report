@@ -49,11 +49,13 @@
 \usepackage{natbib}
 
 
+
 \hypersetup{hidelinks}                                % hide red border in hyperlinks
-\addto\captionsenglish{\renewcommand{\contentsname}{TABLE OF CONTENTS}} % rename TOC title with babel
+\addto\captionsenglish{\renewcommand{\contentsname}{TABLE OF CONTENT}} % rename TOC title with babel
 \addto\captionsenglish{\renewcommand{\listtablename}{LIST OF TABLES}} % uppercase list of tables title
 \addto\captionsenglish{\renewcommand{\bibname}{REFERENCES}} % rename bibliography heading
-\setcounter{tocdepth}{1}                              % hide subsections from TOC
+\setcounter{secnumdepth}{3}                           % number headings down to \paragraph (e.g., 1.2.3.4)
+\setcounter{tocdepth}{3}                              % show TOC entries down to \subsubsection
 \makenoidxglossaries      
 \input{acronyms}                                      % include acronyms.txt file
 \input{glossary}                                      % include glossary.txt file
@@ -114,7 +116,6 @@
 }
 
 \supervisor{Mr. P.P.G. Dinesh Asanka}                % name of supervisor
-% \dean{Prof. Dr. Dean Name}                            % name of faculty dean
 
 \registrationnumber{20562027}
 \projectshortname{STOXLK}        % shown in the page header (left)
@@ -157,7 +158,8 @@ Fundamental analysis is the cornerstone of value-based investing, yet producing 
 \tableofcontents
 % \listoffigures
 \listoftables
-% \printnoidxglossaries
+\glsaddallunused
+\printnoidxglossary[type=\acronymtype,title=LIST OF ACRONYMS]
 \endgroup
 
 
@@ -186,9 +188,10 @@ Fundamental analysis is the cornerstone of value-based investing, yet producing 
 %----------------------------------------------------------------------------------------
 %	APPENDIX
 %----------------------------------------------------------------------------------------
-% \appendix
+\appendix
 
-% \input{chapters/appendix_overview}
+\input{chapters/domain_apx}
+\input{chapters/methodology_apx}
 
 % \glsaddallunused                                % add all unused items to glossary
 

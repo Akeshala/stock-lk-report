@@ -1,64 +1,83 @@
 \chapter{Methodology}
 \section{Chapter overview}
-Outline the methodological structure and rationale.
+
+This chapter presents the methodological framework underpinning the design and development of the Agentic AI-based fundamental analysis system. It begins by outlining the research methodology through the lens of \citep{saunders2019research} Research Onion Model, justifying the philosophical, strategic, and procedural choices that guide the study. The chapter then describes the iterative development methodology adopted for system construction, followed by a discussion of the project management approach, which draws on Agile principles to support continuous refinement. The scope, schedule, resource requirements, and data requirements of the project are subsequently detailed, alongside a structured risk assessment with corresponding mitigation strategies. Together, these elements establish a coherent and rigorous methodological foundation for the research.
 
 \section{Research methodology}
 
 The following table provides an overview of the selected scientific methodology based on the
 conventional Research ‘Onion’ Model, presented by \citep{saunders2019research}.
 
-\begin{table}[H]
-    \centering
-    \renewcommand{\arraystretch}{1.5}
-    \begin{tabular}{|p{4.8cm}|p{10cm}|}
-        \hline
-        Research philosophy & 
-        This study adopts pragmatism as its research philosophy, as it 
-        is primarily focused on addressing a real-world problem, enhancing 
-        fundamental analysis through an Agentic AI-based approach, rather 
-        than adhering to a single philosophical paradigm. Pragmatism enables 
-        the integration of both quantitative methods and qualitative insights, 
-        allowing the research to effectively handle diverse data types. \\
-        \hline
-        Research approach & 
-        An abductive research approach is employed, beginning with the 
-        observation of limitations in conventional stock fundamental analysis 
-        tools, and iteratively developing theoretical and practical insights 
-        through the design and evaluation of an Agentic AI system. This 
-        approach allows the research to move flexibly between data-driven 
-        findings and theoretical reasoning throughout the development process. \\
-        \hline
-        Research methodological choice & 
-        A mixed-methods design is adopted, combining quantitative analysis 
-        of financial metrics with qualitative insights derived from news articles, management 
-        commentary, and market narratives. This dual approach enables a 
-        comprehensive evaluation of stock fundamentals that neither method 
-        could achieve in isolation.  \\
-        \hline
-        Research strategy & 
-        The research follows a design science strategy, centred on the 
-        development and evaluation of an artefact, an Agentic AI-powered 
-        fundamental analysis tool. The system is designed to autonomously 
-        retrieve, process, and synthesise data, producing actionable investment insights. 
-        Iterative prototyping and performance evaluation against financial reports, broker research reports and interviews with domain experts form the core of the research strategy. \\
-        \hline
-        Research time horizon & 
-        A cross-sectional time horizon is adopted, with the tool evaluated 
-        against a defined snapshot of stock market data within a specific 
-        period. This allows for the systematic assessment of the tool's 
-        analytical capabilities without requiring longitudinal tracking, 
-        though future work may extend to longitudinal evaluation. \\
-        \hline
-        Research data collection and analysis & 
-        Data is collected from multiple sources, including financial statements in CSE, news articles, analyst reports is analysed using natural language processing techniques 
-        embedded within the Agentic AI pipeline. The tool's outputs are 
-        evaluated based on accuracy, completeness, and relevance of the 
-        generated fundamental analysis. \\
-        \hline
-    \end{tabular}
-    \caption{Research Methodology}
+\begin{longtable}{|p{4.8cm}|p{10cm}|}
+    \hline
+    \textbf{Research Design Element} & \textbf{Description} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Research Design Element} & \textbf{Description} \\
+    \hline
+    \endhead
+
+    \hline
+    \multicolumn{2}{|r|}{\textit{Continued on next page\ldots}} \\
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+
+    Research Philosophy & 
+    This study adopts pragmatism as its research philosophy, as it 
+    is primarily focused on addressing a real-world problem, enhancing 
+    fundamental analysis through an Agentic AI-based approach, rather 
+    than adhering to a single philosophical paradigm. Pragmatism enables 
+    the integration of both quantitative methods and qualitative insights, 
+    allowing the research to effectively handle diverse data types. \\
+    \hline
+    Research Approach & 
+    An abductive research approach is employed, beginning with the 
+    observation of limitations in conventional stock fundamental analysis 
+    tools, and iteratively developing theoretical and practical insights 
+    through the design and evaluation of an Agentic AI system. This 
+    approach allows the research to move flexibly between data-driven 
+    findings and theoretical reasoning throughout the development process. \\
+    \hline
+    Research Methodological Choice & 
+    A mixed-methods design is adopted, combining quantitative analysis 
+    of financial metrics with qualitative insights derived from news 
+    articles, management commentary, and market narratives. This dual 
+    approach enables a comprehensive evaluation of stock fundamentals 
+    that neither method could achieve in isolation. \\
+    \hline
+    Research Strategy & 
+    The research follows a design science strategy, centred on the 
+    development and evaluation of an artefact, an Agentic AI-powered 
+    fundamental analysis tool. The system is designed to autonomously 
+    retrieve, process, and synthesise data, producing actionable 
+    investment insights. Iterative prototyping and performance evaluation 
+    against financial reports, broker research reports, and interviews 
+    with domain experts form the core of the research strategy. \\
+    \hline
+    Research Time Horizon & 
+    A cross-sectional time horizon is adopted, with the tool evaluated 
+    against a defined snapshot of stock market data within a specific 
+    period. This allows for the systematic assessment of the tool's 
+    analytical capabilities without requiring longitudinal tracking, 
+    though future work may extend to longitudinal evaluation. \\
+    \hline
+    Research Data Collection and Analysis & 
+    Data is collected from multiple sources, including financial 
+    statements from the Colombo Stock Exchange (CSE), news articles, 
+    and analyst reports, which are analysed using natural language 
+    processing techniques embedded within the Agentic AI pipeline. 
+    The tool's outputs are evaluated based on accuracy, completeness, 
+    and relevance of the generated fundamental analysis. \\
+    \hline
+
+    \caption{Research methodology}
     \label{tab:research-methodology}
-\end{table}
+\end{longtable}
 
 \section{Development methodology}
 
@@ -76,7 +95,7 @@ This study focuses on fundamentally analysing publicly listed companies in the C
 
 \subsubsection{Gantt chart}
 
-The schedule of the project is presented in the form of a Gantt chart, in APPENDIX C.3.
+The schedule of the project is presented in the form of a Gantt chart, in APPENDIX B.1.
 
 \subsubsection{Deliverables and dates}
 
@@ -186,24 +205,94 @@ The schedule of the project is presented in the form of a Gantt chart, in APPEND
 \end{itemize}
 
 \subsection{Risks and mitigation}
-Document major project risks with likelihood, impact, and mitigation strategy.
+The following table summarises the major risks identified for the project, together with their corresponding severity, frequency, and mitigation strategies. Severity (S) and Likelihood (L) are evaluated using a scale from 1 to 5, where higher values indicate greater impact or occurrence likelihood.
 
-S: Severity, F: Frequency.
+\begin{longtable}{|p{3.5cm}|p{0.5cm}|p{0.5cm}|p{10cm}|}
+    \hline
+    \textbf{Risk} & \textbf{S} & \textbf{L} & \textbf{Mitigation Plan} \\
+    \hline
+    \endfirsthead
 
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|l|l|l|l|}
-        \hline
-        Risk & S & F & Mitigation Plan \\
-        \hline
-        Data quality risk & Medium & High & Validation and cleaning pipeline \\
-        \hline
-        Timeline overrun & Medium & Medium & Weekly milestone tracking \\
-        \hline
-    \end{tabular}
-    \caption{Risk and mitigation}
+    \hline
+    \textbf{Risk} & \textbf{S} & \textbf{L} & \textbf{Mitigation Plan} \\
+    \hline
+    \endhead
+
+    \hline
+    \multicolumn{4}{|r|}{\textit{Continued on next page\ldots}} \\
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+
+    Qualitative Data Quality Risk & 4 & 3 & 
+    Implement a Retrieval-Augmented Generation (RAG) pipeline to 
+    ground qualitative outputs in verified source documents such 
+    as annual reports, industry-wide reports, and broker reports, 
+    reducing the likelihood of unsupported or fabricated insights. 
+    Outputs will be cross-validated against source documents 
+    during testing prior to interview evaluation. \\
+    \hline
+    Timeline Overrun & 3 & 2 & 
+    A detailed project plan with clearly defined milestones and 
+    deadlines will be maintained throughout the project. An agile 
+    development approach will be adopted, prioritising the delivery 
+    of a minimum viable product (MVP) early in the timeline, 
+    ensuring that core functionalities are completed before optional 
+    enhancements are pursued. Regular supervisor check-ins will be 
+    scheduled to monitor progress and flag delays early. \\
+    \hline
+    Interview Recruitment Challenges & 4 & 4 & 
+    Recruitment will commence early in the project timeline to 
+    allow sufficient lead time. Multiple recruitment channels will 
+    be utilised, including professional networks such as LinkedIn, 
+    university alumni networks, and personal industry contacts. 
+    Online interview formats (e.g., Zoom, Microsoft Teams) will 
+    be offered to reduce participation barriers. A concise 
+    participant information sheet outlining the time commitment 
+    and research purpose will be prepared to encourage 
+    participation. \\
+    \hline
+    Subjectivity in Qualitative Evaluation & 3 & 2 & 
+    A structured interview guide with consistent, pre-defined 
+    evaluation criteria will be developed to standardise 
+    assessments across participants. Thematic analysis will be 
+    employed to systematically identify patterns across interview 
+    responses, reducing the impact of individual subjectivity. \\
+    \hline
+    Agentic AI Pipeline Complexity & 3 & 3 & 
+    The pipeline will be developed and tested in modular stages, 
+    with each component (data retrieval, preprocessing, reasoning, 
+    and output generation) validated independently before 
+    integration. Robust error handling and logging mechanisms 
+    will be implemented at each stage to detect and isolate 
+    failures early. \\
+    \hline
+    Regulatory Concerns & 1 & 1 & 
+    The tool will be explicitly positioned and documented as a 
+    research artefact intended for academic evaluation purposes 
+    only, and not as a licensed financial advisory service. All 
+    outputs will carry appropriate disclaimers. Ethical approval 
+    will be sought from the supervisor prior to conducting 
+    interviews. Informed consent will be obtained from all 
+    participants, and all interview data will be anonymised 
+    and stored securely. \\
+    \hline
+    Computational Resource Constraints & 2 & 2 & 
+    Cloud-based LLM APIs (e.g., OpenAI, Anthropic) will be used 
+    instead of self-hosted models to minimise local infrastructure 
+    requirements. API usage will be carefully monitored and 
+    optimised through prompt efficiency and caching of repeated 
+    queries to control costs. Free academic credits available 
+    through platforms such as Google Cloud, AWS, and OpenAI 
+    will be utilised where possible to offset resource expenses. \\
+    \hline
+
+    \caption{Risk and mitigation plan}
     \label{tab:risk-mitigation}
-\end{table}
+\end{longtable}
 
-% \section{Chapter summary}
-% Summarize methodological choices and transition to LESP and implementation.
+\section{Chapter summary}
+
+This chapter has established the methodological basis for the research. A pragmatist philosophy, abductive approach, and mixed-methods design were selected to accommodate the dual quantitative and qualitative nature of fundamental analysis. The study follows a design science strategy, centred on the iterative development and evaluation of an Agentic AI artefact targeted at publicly listed companies on the Colombo Stock Exchange. An Agile project management framework guides the development lifecycle, with clearly defined deliverables, resource allocations, and risk mitigation strategies in place to support timely and reliable delivery.

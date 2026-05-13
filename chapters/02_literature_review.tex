@@ -17,19 +17,12 @@ sentiment analysis, which dominate the technical-analysis side of the
 literature. The chapter closes with a critical view of evaluation
 practice and a synthesis.
 
-% \section{Concept map}
-% Insert a conceptual map figure and provide a brief explanation of concept relationships.
-
-% \begin{figure}[H]
-%     \centering
-%     \fbox{\rule{0pt}{2in}\rule{0.9\linewidth}{0pt}}
-%     \caption{Concept map of the research domain (placeholder)}
-%     \label{fig:concept-map}
-% \end{figure}
+\section{Concept map}
+A concept map was constructed to visualize the key concepts, methods, and relationships within stock analysis and agentic AI domains. The concept map can be found in APPENDIX A.1.
 
 \section{Problem domain review}
 
-\subsection{Two Traditions: Fundamental Analysis and Price Prediction}
+\subsection{Fundamental Analysis and Technical Analysis}
 \label{sec:twotraditions}
 
 Modern stock analysis still rests on the dichotomy that
@@ -46,8 +39,7 @@ compares intrinsic value to the quoted price to decide whether a
 margin of safety exists \citep{Graham2006}. Technical analysis takes
 the opposite stance: it treats the price series itself as the primary
 object of study and tries to forecast future prices from past prices,
-volumes and, increasingly, the mood of market participants
-\citep{murphy1999}. \citet{Graham2006} is unambiguous that activities
+volumes and, increasingly, the mood of market participants. \citet{Graham2006} is unambiguous that activities
 of this second kind, however sophisticated, fall on the speculative
 side of the line.
 
@@ -77,7 +69,7 @@ integration that is hard to encode in conventional rule-based or
 purely statistical pipelines. Earlier machine-learning approaches
 sidestepped this difficulty by reducing fundamentals to a small set
 of accounting ratios and treating the problem as a classification
-of price direction \citep{bustos2020}, which arguably crosses
+of price direction, which arguably crosses
 Graham's line into speculation by tying the analysis directly to
 short-horizon price moves.
 
@@ -101,7 +93,7 @@ Several frameworks now shape how agentic systems are built in this
 space. Multi-agent orchestration libraries such as AutoGen and
 CrewAI provide patterns for role-based collaboration, tool use and
 conversational delegation \citep{saravanan2026,setyowidodo2025}.
-Retrieval-Augmented Generation (RAG) has become the standard
+Retrieval Augmented Generation (RAG) has become the standard
 mechanism for grounding LLM reasoning in long financial documents
 \citep{han2024}. On the empirical side, financial-domain language
 models such as FinBERT \citep{huang2023finbert} and finance-specific
@@ -122,7 +114,9 @@ Against this backdrop, the proposed system focuses deliberately on
 the fundamental side of Graham's divide. It adopts an agentic
 architecture in which specialised agents read filings, financial
 statements, earnings calls and macroeconomic context, and synthesise
-these into a view of business quality and future profitability without taking a stand on near-term price. Sentiment, which is
+these into a view of business quality and future profitability without taking a stand on near-term price.
+
+Sentiment, which is
 treated extensively in the literature as a driver of price prediction
 \citep{bollen2011,tetlock2007}, is therefore reviewed in
 Section~\ref{sec:sentimentagents} as part of the technical-analysis
@@ -137,8 +131,7 @@ engine.
 \subsection{Large Language Models as Reasoning Engines}
 \label{sec:llms}
 
-LLMs have become the de facto reasoning substrate for agentic systems
-in finance. Their appeal lies in three capabilities: ingesting long,
+LLMs have emerged as the primary reasoning foundation for agentic systems in finance. Their appeal lies in three capabilities: ingesting long,
 mixed-modal text; generating natural-language rationales; and
 following structured prompts. \citet{Papasotiriou2024} show that
 GPT-4, when prompted in a Chain-of-Thought style and given the same
@@ -169,12 +162,12 @@ formalise this as a question of agent group size and collaboration
 structure, and find empirically that single agents outperform
 multi-agent debates for fundamental analysis specifically, while
 ensemble structures dominate for the higher-level "buy or not"
-decision, achieving 66.7~per~cent binary accuracy and a 2.35~per~cent
+decision, achieving 66.6\% binary accuracy and a 2.35\%
 target-price error on Dow Jones 10-K filings. Building on these
 results, \citet{chen2025dda} propose a directed dual-agent design
 in which a subordinate agent specialises in fundamentals, sentiment
 or risk and a leader agent synthesises the output, reporting
-68.3~per~cent buy/not-buy accuracy and a 2.18~per~cent price error
+68.3\% buy / not-buy accuracy and a 2.18\% price error
 under a strong-leadership configuration with evidence that lean,
 vertically structured collaborations can outperform larger horizontal
 teams when coordination overhead is high.
@@ -185,7 +178,7 @@ selecting a subgraph and softmax-weighting agent outputs into a final
 trade signal \citep{rezaei2025gwise}. \citet{Cheng2025} similarly
 deploy specialised analyst, strategist, trader and risk-management
 agents within an AutoGen/CrewAI pipeline, reporting a Sharpe ratio
-of 2.38 against a buy-and-hold baseline of 1.23 on AAPL. These
+of 2.38 against a buy and hold baseline of 1.23 on Apple's stock (NASDAQ: AAPL). These
 designs share a common premise that the structure of agent
 communication is itself a design variable even though they answer
 it differently.
@@ -194,7 +187,7 @@ it differently.
 \label{sec:retrievalmemory}
 
 Two technical mechanisms recur in agentic finance systems:
-retrieval-augmented generation and explicit memory. RAG provides a
+retrieval augmented generation and explicit memory. RAG provides a
 way to ground LLM reasoning in documents that exceed the model's
 context window; \citet{han2024} encapsulate retrieval as a tool
 function that agents call autonomously, while \citet{Fatouros2025MarketSense}
@@ -218,22 +211,38 @@ risk-profile setting contribute non-trivially to performance
 \subsection{Agentic AI for Fundamental Analysis}
 \label{sec:fundamentalagents}
 
-The most directly relevant strand of literature places fundamental
-analysis at the centre of an agentic pipeline. MarketSenseAI~2.0 is
-the most ambitious example: a five-agent system (News, Fundamentals,
+\subsubsection{Generating bullish and bearish signals}
+\label{sec:signal-gen}
+
+Although some work is not directly related to the fundamental analysis literature, they place fundamental analysis at the centre of the agentic pipeline. MarketSenseAI~2.0 is
+an good example: a five-agent system (News, Fundamentals,
 Dynamics, Macroeconomic, Signal) in which the Fundamentals agent
 itself orchestrates a three-layer chain over SEC filings,
 earnings-call transcripts and quarterly numerical data
-\citep{Fatouros2025MarketSense}. On the S\&P 100 over 2023--2024 this design
-produces a cumulative return of 125.9~per~cent against the index
-return of 73.5~per~cent, with a 16~per~cent higher Sortino ratio and
-an explicit alpha of 8.0--18.9~per~cent on the broader S\&P 500
+\citep{Fatouros2025MarketSense}. It also consists of a Macroeconomic agent which is also essential to fundamental analysis. On the S\&P 100 over 2023--2024 this design
+produces a cumulative return of 125.9 \% against the index
+return of 73.5 \%, with a 16 \% higher Sortino ratio and
+an explicit alpha of 8.0--18.9 \% on the broader S\&P 500
 \citep{Fatouros2025MarketSense}. The result is notable not because of the
 headline return backtests of this length are easily flattered by
 survivorship bias but because the authors decompose returns
 using Carhart and Fama-French factor models and still find
 unexplained alpha attributable to the framework's qualitative
 reasoning.
+
+A closely related cluster of work uses agents to reason over annual
+filings directly. \citet{han2024} demonstrate that a single
+fundamental agent reading a 10-K outperforms multi-agent debates for
+fundamental sub-tasks, and that ensemble strategies achieve the best
+target-price prediction error of 2.35 \%
+\citet{mattaparty2025} combine personality-style agents inspired by
+Graham and Buffett with valuation, technical and sentiment agents in
+a unified pipeline; on AAPL the system reports an aggregate
+confidence score of 70.5 \% and a margin-of-safety calculation
+of $88.51$ \% for the Graham agent, suggesting overvaluation.
+
+\subsubsection{Equity research chatbot}
+\label{sec:equity-chatbot}
 
 Other systems take a chatbot-first stance on fundamentals.
 \citet{dongare2024} build an LLM chatbot that ingests
@@ -242,37 +251,26 @@ conference-call transcripts as PDFs, and answers fact-based,
 behavioural and advice-seeking questions with differing accuracy
 across question types. The system explicitly refuses speculative
 investment advice, which is in keeping with Graham's normative stance
-but limits its utility as a stand-alone analyst. FinQAPT pushes the
-same idea further with a three-module pipeline (FinPrimary,
+but limits its utility as a stand-alone analyst. FinQAPT pushes the same idea further with a three-module pipeline (FinPrimary,
 FinContext, FinReader) and a Dynamic N-shot Prompting method that
-achieves state-of-the-art 80.6~per~cent on the FinQA dataset at
-module level \citep{singh2024finqapt}. At the other end of the
-integration spectrum, \citet{saravanan2026} propose MAC, a
+achieves state of the art 80.6 \% on the FinQA dataset at
+module level \citep{singh2024finqapt}. 
+
+\subsubsection{Strategic narrative generation}
+\label{sec:strategic-narrative}
+
+At the other end of the integration spectrum, \citet{saravanan2026} propose MAC, a
 neuro-symbolic three-agent system in which an Analyst harmonises
 noisy SME transactions to a financial ontology, a Quant performs
 causal inference using vector autoregression, Granger causality and
 the PC algorithm, and a Partner generates a strategic narrative
 grounded only in verified causal facts. The deliberate confinement
-of generative behaviour to the explanation stage is the most explicit
-attempt yet in this literature to address Graham's concern about
-disciplined, auditable analysis.
+of generative behaviour to the explanation stage is a close attempt in this literature to address Graham's concern about disciplined, auditable analysis.
 
-A closely related cluster of work uses agents to reason over annual
-filings directly. \citet{han2024} demonstrate that a single
-fundamental agent reading a 10-K outperforms multi-agent debates for
-fundamental sub-tasks, and that ensemble strategies achieve the best
-target-price prediction error of 2.35~per~cent.
-\citet{mattaparty2025} combine personality-style agents inspired by
-Graham and Buffett with valuation, technical and sentiment agents in
-a unified pipeline; on AAPL the system reports an aggregate
-confidence score of 70.5~per~cent and a margin-of-safety calculation
-of $-88.51$~per~cent for the Graham agent, suggesting overvaluation.
-Although the architecture is wide-ranging, the use of a Graham-styled
-agent is symptomatic of how the field is reaching back to classical
-investment thought to discipline LLM behaviour. The Equity Research
-Chatbot of \citet{dongare2024} and the broader survey of agentic AI
-in finance by \citet{bhat2025} confirm that fundamental analysis is
-widely seen as the natural test bed for serious agentic deployments.
+\subsubsection{Financial report generation}
+\label{sec:financial-report-generation}
+
+Most releated work found in literature is template-based financial report generation using Agentic information retrieval (AgenticIR) and Decomposed information retrieval (DecomposedIR) \citet{tian2025templatebased}. The study demonstrates that DecomposedIR, which applies prompt chaining to break down report templates into structured subqueries, consistently outperforms the multi-agent AgenticIR framework across both financial and climate domains, surpassing it by 27\% on average in financial report quality metrics and 33\% in ROUGE-1 on the SumIPCC dataset. This advantage stems from the explicit structural guidance that subquery decomposition provides, whereas AgenticIR's autonomous decomposition lacks such grounding, leading to inconsistencies and coverage gaps in generated reports. Additionally, incorporating a self-reflection mechanism improves report quality by approximately 9.8\% for DecomposedIR, though it simultaneously increases report complexity and reduces readability, suggesting a trade-off between depth of content and accessibility. These findings highlight a key limitation of agentic frameworks in bridging unstructured source documents with structured output templates, offering practical guidance for practitioners selecting LLM-based workflows in industrial settings. Looking ahead, the authors suggest that future research could explore integrating Query-Focused Summarization and Aspect based summarization techniques into multi-agent frameworks to better align agent generated content with template structures, potentially closing the performance gap between agentic and decomposed approaches in template-based financial report generation.
 
 \subsection{Agentic Approaches to Sentiment Analysis}
 \label{sec:sentimentagents}
@@ -436,15 +434,10 @@ MAC, FinQAPT, and the agent-collaboration studies of Han \citep{han2024}
 converges on a small set of design moves: specialise agents by data
 source; ground generation in retrieval and, where possible, in
 deterministic statistical methods; use memory and chain-of-thought
-to handle the multi-timeliness of financial data; and reserve
+to handle the multi timeliness of financial data; and reserve
 generative behaviour for explanation rather than for numerical
 computation \citep{Fatouros2025MarketSense,han2024,saravanan2026,singh2024finqapt}.
 Third, sentiment analysis, however sophisticated its agentic
 implementations, is empirically a short-horizon, price-side signal
 and should be positioned accordingly
 \citep{bollen2011,Papasotiriou2024,xing2025had}.
-
-The proposed system, described in Chapter~3, draws on these lessons
-to build a fundamental-analysis-first agentic architecture, in which
-sentiment, if used at all, is a clearly delimited overlay rather than
-the central reasoning engine.
