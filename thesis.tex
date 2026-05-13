@@ -48,13 +48,31 @@
 \usepackage{tikzscale}
 \usepackage{natbib}
 \usepackage{setspace}
+\usepackage{titlesec}
+\titleformat{\chapter}[block]
+  {\normalfont\fontsize{16}{20}\bfseries}
+  {CHAPTER \thechapter~\textendash}
+  {0.5em}
+  {}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+\titleformat{\section}
+  {\normalfont\fontsize{14}{17}\bfseries}
+  {\thesection}
+  {1em}
+  {}
+\titleformat{\subsection}
+  {\normalfont\fontsize{12}{15}\bfseries}
+  {\thesubsection}
+  {1em}
+  {}
 
 
 
 \hypersetup{hidelinks}                                % hide red border in hyperlinks
-\addto\captionsenglish{\renewcommand{\contentsname}{TABLE OF CONTENT}} % rename TOC title with babel
-\addto\captionsenglish{\renewcommand{\listtablename}{LIST OF TABLES}} % uppercase list of tables title
-\addto\captionsenglish{\renewcommand{\bibname}{REFERENCES}} % rename bibliography heading
+\addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents}}
+\addto\captionsenglish{\renewcommand{\listfigurename}{List of Figures}}
+\addto\captionsenglish{\renewcommand{\listtablename}{List of Tables}}
+\addto\captionsenglish{\renewcommand{\bibname}{References}}
 \setcounter{secnumdepth}{3}                           % number headings down to \paragraph (e.g., 1.2.3.4)
 \setcounter{tocdepth}{3}                              % show TOC entries down to \subsubsection
 \makenoidxglossaries      
@@ -76,6 +94,9 @@
 \setMasterThesis{Thesis}
 \setCasThesis{Thesis}
 \setWiproThesis{Thesis}
+\setHSummary{Abstract}
+\setConsHmain{Declaration}
+\setConsThanks{Acknowledgements}
 \setConsSelf{I hereby declare that this dissertation and all its associated artefacts are produced as a result of my own independent research and academic contributions. I confirm that none of the contents in this dissertation have been submitted or are currently being submitted for any other degree, diploma, or academic qualification at any other academic institution or university. All the sources of ideation, data, and information that are drawn from any work of other authors have been duly acknowledged through appropriate citation and referencing.}
 
 
@@ -158,10 +179,10 @@ Fundamental analysis is the cornerstone of value-based investing, yet producing 
 \begingroup
 \renewcommand{\MakeUppercase}[1]{#1}%
 \tableofcontents
-% \listoffigures
+\listoffigures
 \listoftables
 \glsaddallunused
-\printnoidxglossary[type=\acronymtype,title=LIST OF ACRONYMS]
+\printnoidxglossary[type=\acronymtype,title=List of Acronyms]
 \endgroup
 
 
@@ -182,7 +203,7 @@ Fundamental analysis is the cornerstone of value-based investing, yet producing 
 \cleardoublepage
 \pagenumbering{Roman} % separate numbering for references and back matter
 \bibliographystyle{apalike}
-\addcontentsline{toc}{chapter}{REFERENCES}
+\addcontentsline{toc}{chapter}{References}
 \footnotesize\bibliography{references}
 
 
@@ -191,6 +212,11 @@ Fundamental analysis is the cornerstone of value-based investing, yet producing 
 %	APPENDIX
 %----------------------------------------------------------------------------------------
 \appendix
+\titleformat{\chapter}[block]
+  {\normalfont\fontsize{16}{20}\bfseries}
+  {Appendix \thechapter}
+  {0.5em}
+  {}
 
 \input{chapters/domain_apx}
 \input{chapters/methodology_apx}
