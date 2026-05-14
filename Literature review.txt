@@ -1,7 +1,6 @@
 CHAPTER 2 – LITERATURE REVIEW
 📏 Length: ~15 pages
-📚 Citation Guidance: 1 citation per factual sentence; use recent (≤5 years) authoritative sources (ACM, IEEE, Springer, Elsevier).
-🎯 Goal: Critically analyse the existing body of knowledge, situate your work within it, identify gaps, and build a logical bridge to your methodology.
+📚 Citathe existing body of knowledge, situate your work within it, identify gaps, and build a logical bridge to your methodology.
 
 2.1 Chapter Overview
 Briefly explain the purpose of the literature review and the structure of this chapter in 3–4 sentences. Example flow:
